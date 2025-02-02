@@ -2027,7 +2027,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1571727192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639f1d1e9f393e24391477e926435e9d, type: 3}
+  m_Script: {fileID: 11500000, guid: cf7e22cfbbd17f041b1ad46dcd3b689f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shipCenter: {fileID: 1571727192}
@@ -2035,7 +2035,7 @@ MonoBehaviour:
     m_Name: Move F
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: a20bd15e-a3e9-41b1-9786-c8f5611a642d
+    m_Id: 2e4d16c0-1af7-499d-9bda-2eed2eaf918f
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -2044,7 +2044,16 @@ MonoBehaviour:
     m_Name: Move B
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: d753615e-63ed-400b-aecf-bd1711db98bc
+    m_Id: ed83ded2-835d-4fa3-b86c-8e9802256ef5
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveSpace:
+    m_Name: Move Space
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6ab05f93-8207-454a-920a-ec95e53b3c6f
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
