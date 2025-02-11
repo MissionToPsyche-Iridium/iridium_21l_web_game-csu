@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "moveSpace",
+                    "type": "Button",
+                    "id": "c5b6043e-394d-4630-b01d-1358ba5e8d14",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -369,6 +378,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "MoveB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d88e8d39-e479-4814-9ab9-eb040afa1b4e",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "moveSpace",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
