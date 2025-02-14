@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SpawnAsteroid : MonoBehaviour
 {
+    
     public GameObject asteroid;
     public Transform asteroidSpawnerTransform;
     private GameObject newAsteroid;
@@ -27,8 +28,10 @@ public class SpawnAsteroid : MonoBehaviour
         if (timer > waitTime)
         {
             timer -= waitTime;
-            ranX = Random.Range(-45f, 45f);
-            ranY = Random.Range(110f, 250f);
+            //ranX = Random.Range(-45f, 45f);
+            //ranY = Random.Range(110f, 250f);
+            ranX = Random.Range(-20f, 20f);
+            ranY = Random.Range(170f, 190f);
             ranSpeed = Random.Range(3f, 15f);
             asteroidSpawnerTransform.rotation = Quaternion.Euler(ranX, ranY, 0f);
             spawnAsteroid();
@@ -54,6 +57,10 @@ public class SpawnAsteroid : MonoBehaviour
         {
             for (int i = 0; i < 14; i++)
             {
+                if(asteroidRB == null)
+                {
+                    break;
+                }
                 asteroidRB.transform.localScale += new Vector3(.05f, .05f, .05f);
                 yield return new WaitForSeconds(.1f);
             }
