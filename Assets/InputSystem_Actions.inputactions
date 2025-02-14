@@ -6,7 +6,7 @@
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
-                    "name": "MoveF",
+                    "name": "MoveW",
                     "type": "Button",
                     "id": "351f2ccd-1f9f-44bf-9bec-d62ac5c5f408",
                     "expectedControlType": "",
@@ -87,9 +87,54 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveB",
+                    "name": "MoveS",
                     "type": "Button",
                     "id": "a8232615-23d9-4154-95e2-7249619d338e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveA",
+                    "type": "Button",
+                    "id": "d8ce778b-d276-40c9-ad58-06fb2719b054",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveD",
+                    "type": "Button",
+                    "id": "ec218ac2-1325-4ab2-8d5d-64572d26becb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveShift",
+                    "type": "Button",
+                    "id": "3d2b2546-63eb-4856-897f-3154e29a948c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveSpace",
+                    "type": "Button",
+                    "id": "54a7fb8d-d7d9-4229-bb66-6cfd01c8990c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MoveCtrl",
+                    "type": "Button",
+                    "id": "e2016aa2-c5e8-40d9-9ad5-4a5488b84011",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -104,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "MoveF",
+                    "action": "MoveW",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -368,7 +413,62 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "MoveB",
+                    "action": "MoveS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3717213e-cec5-48d7-af05-a25b45db42f8",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3749dfa0-23a7-456b-a4de-781bb7547668",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveD",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b3934b3-8622-49e7-a78b-b04af8ef2e05",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveShift",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0d547d3-bee7-4701-b3f8-ac817ae88cc1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveSpace",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "54a59f75-4b9a-42d0-8b23-1087c311dce1",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveCtrl",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
