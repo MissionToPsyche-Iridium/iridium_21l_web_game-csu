@@ -33,7 +33,7 @@ public class MoveShip : MonoBehaviour
     void Update()
     {
         //https://www.youtube.com/watch?v=7NMsVub5NZM
-        Debug.Log(shipBody.linearVelocity.magnitude);
+        //Debug.Log(shipBody.linearVelocity.magnitude);
         //Debug.Log(shipSpeed);
         if (!isBoosted) 
         { 
@@ -74,7 +74,6 @@ public class MoveShip : MonoBehaviour
             shipSpeed += .25f;
             shipSpeed = Mathf.Clamp(shipSpeed, 0f, 5f);
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 9f);
-            shipBody.AddForce(transform.forward * shipSpeed);
         }
         else
         {
