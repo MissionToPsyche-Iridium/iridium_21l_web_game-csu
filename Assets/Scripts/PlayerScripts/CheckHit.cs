@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Timers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -27,7 +28,9 @@ public class CheckHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerHealth < 1) {
+            SceneManager.LoadScene(5);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
