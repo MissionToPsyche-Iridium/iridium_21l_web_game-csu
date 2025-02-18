@@ -11,6 +11,10 @@ public class RotateShip : MonoBehaviour
     public static float sensitivity = 1f; //Dylan 
     public InputAction RotateQ;
     public InputAction RotateE;
+    public Rigidbody lockedRotateRB;
+    private float waitTime = 1f;
+    private float timer = 0.0f;
+    private float ranX, ranY, ranSpeed = 0.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,11 +45,23 @@ public class RotateShip : MonoBehaviour
         {
             transform.Rotate(-turn.y * (2*sensitivity), turn.x, 0);
         }
-        else if (RotateShip.flipY == true)
+        if (RotateShip.flipY == true)
         {
             transform.Rotate(turn.y * (2 * sensitivity), turn.x, 0);
         }
-        
+        if (!RotateQ.IsPressed() && !RotateE.IsPressed() && turn.x == 0 && turn.y == 0)
+        {
+            timer += Time.deltaTime;
+            if (timer > waitTime)
+            {
+                transform.rotation = Quaternion.Slerp(transform.rotation, lockedRotateRB.rotation, Time.deltaTime);
+            }
+                
+        }
+        else
+        {
+            timer = 0;
+        }
       
 
     }
