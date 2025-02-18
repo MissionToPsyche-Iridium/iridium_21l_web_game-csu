@@ -13,9 +13,21 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     }
+     public void CreditsButton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+    }
     public void QuitGame()
     {
         Application.Quit();
         Debug.Log("quit.");
+    }
+    public void Awake(){
+        if (PlayerPrefs.HasKey("musicVolume")) {
+        AudioListener.volume = PlayerPrefs.GetFloat("musicVolume");
+        }
+        else{
+        AudioListener.volume = 1f;
+        }
     }
 }

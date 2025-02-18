@@ -9,7 +9,7 @@ public class SpawnAsteroid : MonoBehaviour
     public Transform asteroidSpawnerTransform;
     private GameObject newAsteroid;
     private Rigidbody asteroidRB;
-    private bool canScale = false;
+    //private bool canScale = false;
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
