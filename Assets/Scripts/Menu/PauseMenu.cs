@@ -14,14 +14,6 @@ void Start()
     {
         PauseGame = InputSystem.actions.FindAction("PauseGame");
     }
-    private void OnEnable()
-    {
-        PauseGame.Enable();
-    }
-    private void OnDisable()
-    {
-        PauseGame.Disable();
-    }
     void Update() {
         //Debug.Log("HELP!");
         if (PauseGame.WasPressedThisFrame()){
