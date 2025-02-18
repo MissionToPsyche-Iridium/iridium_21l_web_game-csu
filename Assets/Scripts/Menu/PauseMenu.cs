@@ -22,7 +22,7 @@ void Start()
         PauseGame.Disable();
     }
     void Update() {
-        Debug.Log("HELP!");
+        //Debug.Log("HELP!");
         if (PauseGame.WasPressedThisFrame()){
             if (isPaused){
                 PauseOff();
