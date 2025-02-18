@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -12,8 +13,9 @@ public class MoveShip : MonoBehaviour
     public InputAction moveShift;
     public InputAction moveSpace;
     public InputAction moveCtrl;
-    private float shipSpeed = 5.0f;
     public Rigidbody shipBody;
+    public static float shipSpeed = 5;
+    public static float shipVariableSpeed = 0f;
     private bool isBoosted = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,7 +39,7 @@ public class MoveShip : MonoBehaviour
         { 
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 5f); 
         }
-        
+        shipVariableSpeed = shipBody.linearVelocity.magnitude;
     }
     void FixedUpdate()
     {
@@ -71,8 +73,7 @@ public class MoveShip : MonoBehaviour
             isBoosted = true;
             shipSpeed += .25f;
             shipSpeed = Mathf.Clamp(shipSpeed, 0f, 5f);
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 10f);
-            shipBody.AddForce(transform.forward * shipSpeed);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 9f);
         }
         else
         {
