@@ -31,7 +31,7 @@ public class PlayerInsideBoundary : MonoBehaviour
         if (timer > waitTime)
         {
             Debug.Log("Game Over");
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(5);
         }
     }
     private void OnTriggerExit(Collider other)
