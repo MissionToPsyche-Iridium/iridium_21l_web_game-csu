@@ -7,8 +7,8 @@ public class RotateShip : MonoBehaviour
     public Vector2 turn;
     public GameObject shipCenter;
     private Rigidbody rb;
-
-
+    public static bool flipY = false; //Dylan
+    public static float sensitivity = 1f; //Dylan 
     public InputAction RotateQ;
     public InputAction RotateE;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,10 +25,10 @@ public class RotateShip : MonoBehaviour
         Vector3 rotation = shipCenter.transform.localEulerAngles;
         //establish mouse input variables, and match horizontal mouse movement with ship's Z rotation
         turn.x = Input.GetAxis("Mouse X");
-       
-     
+
         turn.y = Input.GetAxis("Mouse Y");
-    
+
+
         if (RotateQ.IsPressed())
         {
             transform.Rotate(0f, 0f, .25f);
@@ -37,8 +37,15 @@ public class RotateShip : MonoBehaviour
         {
             transform.Rotate(0f, 0f, -.25f);
         }
-       
-        transform.Rotate(turn.y, turn.x, 0);
+        if (RotateShip.flipY == false)
+        {
+            transform.Rotate(-turn.y * (2*sensitivity), turn.x, 0);
+        }
+        else if (RotateShip.flipY == true)
+        {
+            transform.Rotate(turn.y * (2 * sensitivity), turn.x, 0);
+        }
+        
       
 
     }
