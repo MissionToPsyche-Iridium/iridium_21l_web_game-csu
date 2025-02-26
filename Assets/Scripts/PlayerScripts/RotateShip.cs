@@ -27,27 +27,39 @@ public class RotateShip : MonoBehaviour
     void Update()
     {
         Vector3 rotation = shipCenter.transform.localEulerAngles;
-        //establish mouse input variables, and match horizontal mouse movement with ship's Z rotation
-        turn.x = Input.GetAxis("Mouse X");
+        if (spawnScript.cutscene)
+        {
+            RotateE.Disable();
+            RotateQ.Disable();
+        }
+        else
+        {
+            RotateE.Enable();
+            RotateQ.Enable();
+            turn.x = Input.GetAxis("Mouse X");
 
-        turn.y = Input.GetAxis("Mouse Y");
+            turn.y = Input.GetAxis("Mouse Y");
+        }
+        
+        //establish mouse input variables, and match horizontal mouse movement with ship's Z rotation
+        
 
 
         if (RotateQ.IsPressed())
         {
-            transform.Rotate(0f, 0f, .25f);
+            transform.Rotate(0f, 0f, 75f  * Time.deltaTime);
         }
         if (RotateE.IsPressed())
         {
-            transform.Rotate(0f, 0f, -.25f);
+            transform.Rotate(0f, 0f, -75f * Time.deltaTime);
         }
         if (RotateShip.flipY == false)
         {
-            transform.Rotate(-turn.y * (2*sensitivity), turn.x, 0);
+            transform.Rotate(-turn.y * (2*sensitivity + .1f), turn.x * (2 * sensitivity + .1f), 0);
         }
         if (RotateShip.flipY == true)
         {
-            transform.Rotate(turn.y * (2 * sensitivity), turn.x, 0);
+            transform.Rotate(turn.y * (2 * sensitivity + .1f) , turn.x * (2 * sensitivity + .1f), 0);
         }
         if (!RotateQ.IsPressed() && !RotateE.IsPressed() && turn.x == 0 && turn.y == 0)
         {
