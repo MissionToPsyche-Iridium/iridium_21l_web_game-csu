@@ -568,6 +568,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: {x: 0, y: 0}
   shipCenter: {fileID: 1571727192}
+  RotateQ:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2bd185cd-44f2-40b7-a267-47644cddb7ed
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  RotateE:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bd0b9a50-498a-45de-92ab-46e43b7321ef
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  lockedRotateRB: {fileID: 0}
 --- !u!1 &67754079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,18 +1836,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-
   - component: {fileID: 882027426}
+  - component: {fileID: 882027427}
   - component: {fileID: 882027429}
   - component: {fileID: 882027428}
-  - component: {fileID: 882027427}
   m_Layer: 0
-  m_Name: r
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &882027426
 Transform:
   m_ObjectHideFlags: 0
@@ -2111,18 +2129,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-
   m_GameObject: {fileID: 1101247672}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -9.565127, y: 3.0448017, z: 3.5221443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2021858608}
   - {fileID: 287000991}
+  - {fileID: 2021858608}
   m_Father: {fileID: 364045532}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1121633187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2933,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: {x: 0, y: 0}
   shipCenter: {fileID: 1571727192}
+  RotateQ:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3c03f4f5-c68e-48be-b219-15edc2736285
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  RotateE:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6992795e-2059-4740-b4af-56ceddbde74e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  lockedRotateRB: {fileID: 0}
 --- !u!114 &1571727195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,20 +2965,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipCenter: {fileID: 1571727192}
-  moveF:
-    m_Name: Move F
+  moveW:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 2e4d16c0-1af7-499d-9bda-2eed2eaf918f
+    m_Id: 2be893f8-8e55-482e-8ece-1fa49fda645c
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  moveB:
-    m_Name: Move B
+  moveS:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: ed83ded2-835d-4fa3-b86c-8e9802256ef5
+    m_Id: 8fc4b662-4a17-41f6-ad4d-14d815f8bd4a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveA:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3df9bc32-177d-448c-9c48-63723eb22c21
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveD:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bd9bf260-5494-4c51-b2ea-1dd148746b25
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveShift:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 14d9407f-7325-4262-be91-4d87fe92ad8c
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -2952,6 +3015,15 @@ MonoBehaviour:
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 6ab05f93-8207-454a-920a-ec95e53b3c6f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  moveCtrl:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f343598f-3802-4e6d-9da3-c03c7983ba9b
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -3676,6 +3748,8 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
+  - {fileID: 856090336}
+  - {fileID: 1571727193}
+  - {fileID: 2126747273}

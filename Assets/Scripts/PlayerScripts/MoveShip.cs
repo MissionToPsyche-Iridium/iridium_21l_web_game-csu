@@ -32,6 +32,26 @@ public class MoveShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (spawnScript.cutscene)
+        {
+            moveW.Disable();
+            moveS.Disable();
+            moveA.Disable();   
+            moveD.Disable();    
+            moveShift.Disable();    
+            moveSpace.Disable();    
+            moveCtrl.Disable();
+        }
+        else
+        {
+            moveW.Enable(); 
+            moveS.Enable(); 
+            moveA.Enable(); 
+            moveD.Enable();
+            moveShift.Enable(); 
+            moveSpace.Enable();
+            moveCtrl.Enable();
+        }
         //https://www.youtube.com/watch?v=7NMsVub5NZM
         //Debug.Log(shipBody.linearVelocity.magnitude);
         //Debug.Log(shipSpeed);
