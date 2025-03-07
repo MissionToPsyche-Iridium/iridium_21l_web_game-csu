@@ -57,11 +57,11 @@ public class CheckHit : MonoBehaviour
             else if (playerHealth == 0)
             {
                 Destroy(GameObject.FindGameObjectWithTag("Health1"));
-                Debug.Log("Game Over");
+                
                 
             }
             newParticles = Instantiate(explosionParticles, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-            Debug.Log("REACHED");
+            //Debug.Log("REACHED");
             Destroy(collision.gameObject);
         }
 
