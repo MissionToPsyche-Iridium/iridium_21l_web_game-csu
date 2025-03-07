@@ -25,7 +25,7 @@ public class PlayerInsideBoundary : MonoBehaviour
     }
     
     private void startTimer()
-    {
+    {       
         timer += Time.deltaTime;
         Debug.Log(timer);
         if (timer > waitTime)
@@ -36,7 +36,7 @@ public class PlayerInsideBoundary : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Leaving! Please return to play area!");
+        //Debug.Log("Leaving! Please return to play area!");
         startTime = true;
 
     }
@@ -46,7 +46,7 @@ public class PlayerInsideBoundary : MonoBehaviour
         startTime = false;
         if (skipFirstCheck !=0)
         {
-            Debug.Log("Back in playspace");
+           // Debug.Log("Back in playspace");
             
         }
         skipFirstCheck++;
