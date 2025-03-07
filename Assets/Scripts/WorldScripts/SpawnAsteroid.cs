@@ -23,8 +23,10 @@ public class SpawnAsteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!spawnScript.cutscene) 
+        { 
         timer += Time.deltaTime;
-        
+
         if (timer > waitTime)
         {
             timer -= waitTime;
@@ -38,7 +40,8 @@ public class SpawnAsteroid : MonoBehaviour
             waitTime = Random.Range(3.0f, 10.0f);
 
         }
-
+   
+        }
         
     }
 
@@ -61,7 +64,7 @@ public class SpawnAsteroid : MonoBehaviour
                 {
                     break;
                 }
-                asteroidRB.transform.localScale += new Vector3(.05f, .05f, .05f);
+                asteroidRB.transform.localScale += new Vector3(.01f, .01f, .01f);
                 yield return new WaitForSeconds(.1f);
             }
             

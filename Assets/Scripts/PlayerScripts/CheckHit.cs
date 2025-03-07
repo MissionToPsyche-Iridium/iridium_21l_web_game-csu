@@ -80,7 +80,7 @@ public class CheckHit : MonoBehaviour
             isHit = true;
             playerX = (Random.value - .5f) * currentMagnitude;
             playerY = (Random.value - .5f) * currentMagnitude;
-            camera.transform.localPosition = new Vector3(playerX, playerY+.384f, 1.612f);
+            camera.transform.localPosition = new Vector3(playerX+2.404041E-07f, playerY+ 0.710002f, 2.41901f);
 
             elapsed += Time.deltaTime;
             currentMagnitude = (1 - (elapsed / duration)) * (1 - (elapsed / duration));
@@ -89,7 +89,7 @@ public class CheckHit : MonoBehaviour
             yield return null;
         }
         isHit = false;
-        camera.transform.localPosition = new Vector3(0f, 0.384f, 1.612f);
+        camera.transform.localPosition = new Vector3(2.404041E-07f, 0.710002f, 2.41901f);
     }
 
 
