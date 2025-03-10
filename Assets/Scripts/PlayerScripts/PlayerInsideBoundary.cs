@@ -4,10 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInsideBoundary : MonoBehaviour
 {
-    private bool startTime = false;
+    private bool startTime = true;
     private float waitTime = 10.0f;
     private float timer = 0.0f;
-    private int skipFirstCheck = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,7 +16,7 @@ public class PlayerInsideBoundary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startTime)
+        if (startTime && spawnScript.cutscene==false)
         {
             startTimer();
         }
@@ -34,21 +33,14 @@ public class PlayerInsideBoundary : MonoBehaviour
             SceneManager.LoadScene(5);
         }
     }
+    private void OnTriggerStay(Collider other)
+    {
+        startTime = false;
+        timer = 0.0f;
+    }
+
     private void OnTriggerExit(Collider other)
     {
-        //Debug.Log("Leaving! Please return to play area!");
         startTime = true;
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        timer = 0.0f;
-        startTime = false;
-        if (skipFirstCheck !=0)
-        {
-           // Debug.Log("Back in playspace");
-            
-        }
-        skipFirstCheck++;
     }
 }

@@ -31,6 +31,11 @@ public class CheckHit : MonoBehaviour
         if (playerHealth < 1) {
             SceneManager.LoadScene(5);
         }
+
+        if (MoveShip.isSlingshot)
+        {
+            timer = StartCoroutine(ShakeCameraSlingshot(1f));
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,6 +49,7 @@ public class CheckHit : MonoBehaviour
             {
                 StopCoroutine(timer);
             }
+            
             timer = StartCoroutine(ShakeCamera(1f));
             playerHealth -= 1;
             if (playerHealth == 2)
@@ -90,8 +96,29 @@ public class CheckHit : MonoBehaviour
         }
         isHit = false;
         camera.transform.localPosition = new Vector3(2.404041E-07f, 0.710002f, 2.41901f);
+      
+    }
+    IEnumerator ShakeCameraSlingshot(float duration)
+    {
+        
+        float elapsed = 0f;
+        float currentMagnitude = .25f;
+        float playerX;
+        float playerY;
+        while (elapsed < duration)
+        {
+            playerX = (Random.value - .5f) * currentMagnitude;
+            playerY = (Random.value - .5f) * currentMagnitude;
+            camera.transform.localPosition = new Vector3(playerX + 2.404041E-07f, playerY + 0.710002f, 2.41901f);
+            yield return null;
+        }
+        camera.transform.localPosition = new Vector3(2.404041E-07f, 0.710002f, 2.41901f);
+        if (MoveShip.isSlingshot)
+        {
+            StartCoroutine(ShakeCameraSlingshot(1f));
+        }
     }
 
 
-   
+
 }

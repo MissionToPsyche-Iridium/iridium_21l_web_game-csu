@@ -9,6 +9,8 @@ TagManager:
   - Health1
   - Health3
   - ship
+  - Slingshot
+  - SlingWarning
   layers:
   - Default
   - TransparentFX
