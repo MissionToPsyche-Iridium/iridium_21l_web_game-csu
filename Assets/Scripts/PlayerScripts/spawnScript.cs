@@ -14,6 +14,7 @@ public class spawnScript : MonoBehaviour
     private bool pos1Done = false;
     private float waitTime = 2f;
     private float timer = 0.0f;
+    public static float cutsceneTime = 5.3f;
     public static bool cutscene = true;
     private bool timerOn = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,17 +43,17 @@ public class spawnScript : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lockedRotateRB.rotation, 1.5f * Time.deltaTime);
 
         }
-        if (timer > 3f && timer < 5.3f && tag == "ship")
+        if (timer > 3f && timer < cutsceneTime && tag == "ship")
         {
             transform.position = Vector3.MoveTowards(transform.position, posT2.position, step);
             transform.rotation = Quaternion.Slerp(transform.rotation, lockedRotateRB.rotation, 1.5f * Time.deltaTime);
         }
-        if (timer > 2f && timer < 5.3f && tag == "MainCamera")
+        if (timer > 2f && timer < cutsceneTime && tag == "MainCamera")
         {
             transform.position = Vector3.MoveTowards(transform.position, posCam.position, camStep);
         }
         
-        if (timer > 5.3f)
+        if (timer > cutsceneTime)
         {
             cutscene = false;
             timerOn = false;
