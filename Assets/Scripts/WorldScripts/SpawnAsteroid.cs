@@ -9,7 +9,6 @@ public class SpawnAsteroid : MonoBehaviour
     public Transform asteroidSpawnerTransform;
     private GameObject newAsteroid;
     private Rigidbody asteroidRB;
-    //private bool canScale = false;
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
@@ -23,8 +22,10 @@ public class SpawnAsteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!spawnScript.cutscene) 
+        { 
         timer += Time.deltaTime;
-        
+
         if (timer > waitTime)
         {
             timer -= waitTime;
@@ -38,7 +39,8 @@ public class SpawnAsteroid : MonoBehaviour
             waitTime = Random.Range(3.0f, 10.0f);
 
         }
-
+   
+        }
         
     }
 
@@ -61,7 +63,7 @@ public class SpawnAsteroid : MonoBehaviour
                 {
                     break;
                 }
-                asteroidRB.transform.localScale += new Vector3(.05f, .05f, .05f);
+                asteroidRB.transform.localScale += new Vector3(.01f, .01f, .01f);
                 yield return new WaitForSeconds(.1f);
             }
             
@@ -70,7 +72,7 @@ public class SpawnAsteroid : MonoBehaviour
         IEnumerator deleteAsteroid()
         {
            
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(10f);
             Destroy(newAsteroid);
             
 
