@@ -18,6 +18,7 @@ public class MoveShip : MonoBehaviour
     public static float shipVariableSpeed = 0f;
     private bool isBoosted = false;
     public static bool isSlingshot = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +37,7 @@ public class MoveShip : MonoBehaviour
     {
         if (spawnScript.cutscene)
         {
+            shipBody.linearVelocity = new Vector3(0f, 0f);
             moveW.Disable();
             moveS.Disable();
             moveA.Disable();   
@@ -54,6 +56,7 @@ public class MoveShip : MonoBehaviour
             moveSpace.Enable();
             moveCtrl.Enable();
         }
+        
         //https://www.youtube.com/watch?v=7NMsVub5NZM
         //Debug.Log(shipBody.linearVelocity.magnitude);
         //Debug.Log(shipSpeed);
