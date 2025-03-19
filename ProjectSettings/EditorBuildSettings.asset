@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndScreenLoss.unity
     guid: 5bb4ae42b51d6f344b426f8b7dd1b86f
+  - enabled: 1
+    path: Assets/Scenes/Story.unity
+    guid: 9b76d3c32e212b94f87148c481cb8b2f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
