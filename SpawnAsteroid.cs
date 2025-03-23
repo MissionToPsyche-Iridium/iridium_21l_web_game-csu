@@ -4,14 +4,16 @@ using UnityEngine.SceneManagement;
 
 public class SpawnAsteroid : MonoBehaviour
 {
+
     private float random_numb;
     public GameObject asteroid;
     public Transform asteroidSpawnerTransform;
     private GameObject newAsteroid;
     private Rigidbody asteroidRB;
+    //private bool canScale = false;
     private float waitTime = 0f;
     private float timer = 0.0f;
-    private float ranX, ranY, ranSpeed = 0.0f;
+    private float ranX, ranY,ranSpeed = 0.0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,18 +24,26 @@ public class SpawnAsteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!spawnScript.cutscene) 
+        { 
         timer += Time.deltaTime;
 
         if (timer > waitTime)
         {
             timer -= waitTime;
+            //ranX = Random.Range(-45f, 45f);
+            //ranY = Random.Range(110f, 250f);
             ranX = Random.Range(-20f, 20f);
             ranY = Random.Range(170f, 190f);
             ranSpeed = Random.Range(3f, 15f);
             asteroidSpawnerTransform.rotation = Quaternion.Euler(ranX, ranY, 0f);
             spawnAsteroid();
             waitTime = Random.Range(3.0f, 10.0f);
+
         }
+   
+        }
+        
     }
 
     private void spawnAsteroid()
@@ -49,13 +59,11 @@ public class SpawnAsteroid : MonoBehaviour
         StartCoroutine(ScaleAsteroid(asteroidRB, newAsteroid));
         StartCoroutine(DeleteAsteroid(newAsteroid));
 
-        // Apply random velocity
         asteroidRB.linearVelocity = asteroidRB.transform.TransformDirection(Vector3.forward * ranSpeed);
     }
-
     private IEnumerator ScaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
-        random_numb = Random.Range(7f, 50f);
+        random_numb = Random.Range(7f, 35f);
 
         for (int i = 0; i < random_numb; i++)
         {
@@ -77,5 +85,7 @@ public class SpawnAsteroid : MonoBehaviour
         {
             Destroy(newAsteroid);
         }
+
+
     }
 }
