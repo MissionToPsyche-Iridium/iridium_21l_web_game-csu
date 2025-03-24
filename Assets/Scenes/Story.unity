@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpace:
-    m_Name: 
+    m_Name: Move Space
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 49b9c7a6-c93c-4ffc-a0b5-bb29e05861c5
