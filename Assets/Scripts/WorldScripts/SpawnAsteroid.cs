@@ -75,8 +75,8 @@ public class SpawnAsteroid : MonoBehaviour
         StartCoroutine(scaleTimer());
         IEnumerator scaleTimer()
         {
-            random_numb = Random.Range(.03f,.1f);
-            Debug.Log(random_numb);
+            random_numb = Random.Range(.05f,.1f);
+            
             for (int i = 0; i < 20; i++)
             {
                 if (asteroidRB == null)
