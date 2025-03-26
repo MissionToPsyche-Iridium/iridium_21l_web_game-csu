@@ -15,6 +15,7 @@ public class SpawnAsteroid : MonoBehaviour
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
+    private float random_numb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,49 +69,25 @@ public class SpawnAsteroid : MonoBehaviour
         healthRB = newHealth.GetComponent<Rigidbody>();
        // rotateHealth(healthRB, newHealth);
     }
-    private void rotateHealth(Rigidbody healthRB, GameObject newHealth)
-    {
-        StartCoroutine(scaleTimer());
-        IEnumerator scaleTimer()
-        {
-            for (int i = 0; i < 14; i++)
-            {
-                if (healthRB == null)
-                {
-                    break;
-                }
-                
-                yield return new WaitForSeconds(.1f);
-            }
 
-        }
-        StartCoroutine(deleteHealth());
-        IEnumerator deleteHealth()
-        {
-
-            yield return new WaitForSeconds(10f);
-            Destroy(newHealth);
-
-
-        }
-
-
-    }
     private void scaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
         StartCoroutine(scaleTimer());
         IEnumerator scaleTimer()
         {
-            for (int i = 0; i < 14; i++)
+            random_numb = Random.Range(.03f,.1f);
+            Debug.Log(random_numb);
+            for (int i = 0; i < 20; i++)
             {
-                if(asteroidRB == null)
+                if (asteroidRB == null)
                 {
-                    break;
+                    yield break; // Stop scaling if the asteroid is destroyed
                 }
-                asteroidRB.transform.localScale += new Vector3(.1f, .1f, .1f);
+
+                newAsteroid.transform.localScale += new Vector3(random_numb, random_numb, random_numb);
                 yield return new WaitForSeconds(.1f);
             }
-            
+
         }
         StartCoroutine(deleteAsteroid());
         IEnumerator deleteAsteroid()

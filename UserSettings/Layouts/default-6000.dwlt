@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 97
+  controlID: 111
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -774,9 +774,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -5.099286, y: -6.135865, z: -28.33101}
+    m_Target: {x: 11.979611, y: 7.227187, z: -31.526016}
     speed: 2
-    m_Value: {x: -5.099286, y: -6.135865, z: -28.33101}
+    m_Value: {x: 11.979611, y: 7.227187, z: -31.526016}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -822,9 +822,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.11048703, y: -0.102683485, z: 0.011479562, w: 0.9885096}
+    m_Target: {x: -0.09272779, y: 0.16646588, z: 0.015730761, w: 0.9815681}
     speed: 2
-    m_Value: {x: 0.11048513, y: -0.10268172, z: 0.011479365, w: 0.9884926}
+    m_Value: {x: -0.094198495, y: 0.16643938, z: 0.015980197, w: 0.9814119}
   m_Size:
     m_Target: 17.686073
     speed: 2
@@ -898,9 +898,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ca360000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 20fbffff28a7000064a90000
+      m_ExpandedIDs: be25feff20fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1073,7 +1073,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/PlayerScripts
+    - Assets/Scenes
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1083,16 +1083,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/PlayerScripts
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: G:\Projects\NewNewMain
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 48db0000
-    m_LastClickedID: 56136
-    m_ExpandedIDs: 0000000066ad00003cdb000000ca9a3b
+    m_SelectedIDs: d4ad0000
+    m_LastClickedID: 44500
+    m_ExpandedIDs: 0000000066ad0000d6ad000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1153,18 +1153,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: c62300004ca8000036b1000020a7000000000000381e01007aaa000084a70000ccbc000082ab00006eab0000e8a700001aa80000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: SpawnAsteroid
+      m_OriginalName: SpawnAsteroid
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 18358
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 10}
