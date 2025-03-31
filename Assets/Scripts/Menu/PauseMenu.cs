@@ -26,6 +26,7 @@ public void BackToMenu(){
     Time.timeScale = 1;
 }
 void Start(){
+    Time.timeScale = 1;
     Cursor.lockState = CursorLockMode.Locked;
     MenuPanel.SetActive(false);
     ResumeButton.SetActive(false);
