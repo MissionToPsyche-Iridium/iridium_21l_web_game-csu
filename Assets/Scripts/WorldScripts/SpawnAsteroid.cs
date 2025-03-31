@@ -6,12 +6,16 @@ public class SpawnAsteroid : MonoBehaviour
 {
     
     public GameObject asteroid;
+    public GameObject health;
     public Transform asteroidSpawnerTransform;
     private GameObject newAsteroid;
+    private GameObject newHealth;
+    private Rigidbody healthRB;
     private Rigidbody asteroidRB;
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
+    private float random_numb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,7 +39,14 @@ public class SpawnAsteroid : MonoBehaviour
             ranY = Random.Range(170f, 190f);
             ranSpeed = Random.Range(3f, 15f);
             asteroidSpawnerTransform.rotation = Quaternion.Euler(ranX, ranY, 0f);
-            spawnAsteroid();
+            if (CheckHit.playerHealth < 3 && Random.Range(0,101) < 6)
+                {
+                    spawnHealth();
+                }
+            else
+                {
+                    spawnAsteroid();
+                }
             waitTime = Random.Range(3.0f, 10.0f);
 
         }
@@ -52,21 +63,31 @@ public class SpawnAsteroid : MonoBehaviour
         
         asteroidRB.linearVelocity = asteroidRB.transform.TransformDirection(Vector3.forward * ranSpeed);
     }
+    private void spawnHealth()
+    {
+        newHealth = Instantiate(health, asteroidSpawnerTransform.position, asteroidSpawnerTransform.rotation);
+        healthRB = newHealth.GetComponent<Rigidbody>();
+       // rotateHealth(healthRB, newHealth);
+    }
+
     private void scaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
         StartCoroutine(scaleTimer());
         IEnumerator scaleTimer()
         {
-            for (int i = 0; i < 14; i++)
+            random_numb = Random.Range(.05f,.1f);
+            
+            for (int i = 0; i < 20; i++)
             {
-                if(asteroidRB == null)
+                if (asteroidRB == null)
                 {
-                    break;
+                    yield break; // Stop scaling if the asteroid is destroyed
                 }
-                asteroidRB.transform.localScale += new Vector3(.01f, .01f, .01f);
+
+                newAsteroid.transform.localScale += new Vector3(random_numb, random_numb, random_numb);
                 yield return new WaitForSeconds(.1f);
             }
-            
+
         }
         StartCoroutine(deleteAsteroid());
         IEnumerator deleteAsteroid()

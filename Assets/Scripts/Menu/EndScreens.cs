@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndScreens : MonoBehaviour
 {
+    void Start() {
+    Cursor.lockState = CursorLockMode.None;
+    }
     public void BackToMenu()
     {
         SceneManager.LoadScene(0);

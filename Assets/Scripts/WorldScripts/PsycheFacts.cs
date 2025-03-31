@@ -1,11 +1,23 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 public class PsycheFacts : MonoBehaviour
 {
-
+    //https://www.youtube.com/watch?v=8oTYabhj248
+    public TextMeshProUGUI textComponent;
+    public string[] lines;
+    public float textSpeed;
+    public GameObject marsSlingshotBoundary;
+    private int index;
+    private bool isTextDone = false;
+    public Button understoodButton;
+    public GameObject UIPanel;
+    private float tempSensitivity;
     Dictionary<int, string> psycheFacts = new Dictionary<int, string>()
     {
         {1, "By August 2029 the Psyche spacecraft will begin exploring the asteroid that scientists think – because of its high metal content – may be the partial core of a planetesimal, a building block of an early planet." },
@@ -42,6 +54,8 @@ public class PsycheFacts : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        understoodButton.gameObject.SetActive(false);
+        UIPanel.SetActive(false);
         for (int j = 0; j < 27; j++)
         {
             tempList.Add(numPicker[j]);
@@ -53,18 +67,43 @@ public class PsycheFacts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if (isTextDone)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            understoodButton.gameObject.SetActive(true);
+        }
+    }
+
+    public void understoodButtonFunct()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        textComponent.text = string.Empty;
+        isTextDone = false;
+        understoodButton.gameObject.SetActive(false);
+        UIPanel.SetActive(false);
+        GetComponent<RotateShip>().enabled = true;
+        Time.timeScale = 1f;
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
-        
-        
+       
         if (collision.collider.CompareTag("Asteroid"))
         {
+            GetComponent<RotateShip>().enabled = false;
             int tempIndex = 0;
             i = UnityEngine.Random.Range(0, tempList.Count);
             tempIndex = tempList[i];
+            textComponent.text = string.Empty;
+            lines[0] = psycheFacts[tempIndex];
+            startDialogue();
+            UIPanel.SetActive(true);
+            MoveShip.isSlingshot = false;
+            //marsSlingshotBoundary.transform.position = new Vector3(0, 1000f);
+            Time.timeScale = 0;
+
+            
+           
+
             Debug.Log(psycheFacts[tempIndex]);
             tempList.RemoveAt(i);
             
@@ -76,5 +115,21 @@ public class PsycheFacts : MonoBehaviour
                 tempList.Add(numPicker[j]);
             }
         }
+    }
+
+    void startDialogue()
+    {
+        index = 0;
+        StartCoroutine(TypeLine());
+    }
+    IEnumerator TypeLine()
+    {
+        foreach (char c in lines[index].ToCharArray())
+        {
+            textComponent.text += c;
+            yield return new WaitForSecondsRealtime(textSpeed);
+        }
+        Debug.Log("DONE");
+        isTextDone = true;
     }
 }

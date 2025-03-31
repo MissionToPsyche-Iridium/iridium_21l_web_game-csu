@@ -11,6 +11,8 @@ TagManager:
   - ship
   - Slingshot
   - SlingWarning
+  - RegenHealth
+  - PlayerBoundary
   layers:
   - Default
   - TransparentFX

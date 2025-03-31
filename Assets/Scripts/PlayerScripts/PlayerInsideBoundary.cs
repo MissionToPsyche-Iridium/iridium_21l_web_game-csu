@@ -14,31 +14,39 @@ public class PlayerInsideBoundary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!startTime)
+        if (!startTime && spawnScript.cutscene == true)
         {
+
             OutOfBoundsWarning.color = Color.clear;
             OutOfBoundsTime.color = Color.clear;
             timer = 0f;
         }
-        else
+        else if (startTime && spawnScript.cutscene == false)
         {
             OutOfBoundsTime.color = Color.white;
             OutOfBoundsWarning.color = Color.white;
             startTimer();
 
-            timeLeft = waitTime - timer; 
+            timeLeft = waitTime - timer;
             if (timeLeft < 0) timeLeft = 0; //prevents negative values from showing on screen
 
             float minutes = Mathf.FloorToInt(timeLeft / 60f);
             float seconds = Mathf.FloorToInt(timeLeft % 60f);
             OutOfBoundsTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
+        else if (!startTime && spawnScript.cutscene == false)
+        {
+            OutOfBoundsWarning.color = Color.clear;
+            OutOfBoundsTime.color = Color.clear;
+            timer = 0f;
+        }
     }
+
     private void startTimer()
-    {       
+    {
         timer += Time.deltaTime;
         Debug.Log(timer);
-        if (timer >= waitTime)
+        if (timer > waitTime)
         {
             Debug.Log("Game Over");
             SceneManager.LoadScene(5);
@@ -46,12 +54,19 @@ public class PlayerInsideBoundary : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        startTime = false;
-        timer = 0.0f;
+        if (other.CompareTag("PlayerBoundary"))
+        {
+            startTime = false;
+            timer = 0.0f;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        startTime = true;
+        if (other.CompareTag("PlayerBoundary"))
+        {
+            startTime = true;
+        }
     }
 }
