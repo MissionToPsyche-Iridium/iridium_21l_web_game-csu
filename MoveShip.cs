@@ -115,7 +115,7 @@ public class MoveShip : MonoBehaviour
             shipBody.AddForce(-transform.up * shipSpeed);
         }
         //Created new bit so it boosts whenever keys W and Shift are both pressed at same time
-        if (moveW.IsPressed() && moveShift.IsPressed())
+        if (moveW.IsPressed() && moveShift.IsPressed() && Stamina > 0)
         {
             isBoosted = true;
             Stamina -= BoostCost * Time.deltaTime;
@@ -130,6 +130,15 @@ public class MoveShip : MonoBehaviour
         {
             Stamina = 0;
             isBoosted = false;
+        }
+
+        if (!isBoosted)
+        {
+            Stamina += (BoostCost / 2) * Time.deltaTime; // Adjust the regen rate as needed
+            if (Stamina > MaxStamina)
+            {
+                Stamina = MaxStamina;
+            }
         }
     }
     private void OnTriggerStay(Collider other)
