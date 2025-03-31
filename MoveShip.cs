@@ -1,7 +1,7 @@
-using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Rendering;
 public class MoveShip : MonoBehaviour
 {
     public GameObject shipCenter;
@@ -9,23 +9,25 @@ public class MoveShip : MonoBehaviour
     public InputAction moveS;
     public InputAction moveA;
     public InputAction moveD;
+    //Created moveSpace input action
     public InputAction moveShift;
     public InputAction moveSpace;
     public InputAction moveCtrl;
     public Rigidbody shipBody;
     public static float shipSpeed = 5;
     public static float shipVariableSpeed = 0f;
-
     private bool isBoosted = false;
-    private int boost_value = 200;  // Starting boost value
-    private bool isBoostAvailable = true;
-    private bool isDepleting = false;
+    public static bool isSlingshot = false;
 
-    private float boostCooldownTime = 5f;  // Cooldown time after boost depletes
-    private float countdownTimer = 5f;
+    public float Stamina, MaxStamina;
+    public float BoostCost;
 
+    
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isSlingshot = false;
         moveW = InputSystem.actions.FindAction("MoveW");
         moveS = InputSystem.actions.FindAction("MoveS");
         moveA = InputSystem.actions.FindAction("MoveA");
@@ -35,59 +37,59 @@ public class MoveShip : MonoBehaviour
         moveCtrl = InputSystem.actions.FindAction("MoveCtrl");
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Disable/Enable input based on the cutscene flag
         if (spawnScript.cutscene)
         {
+            shipBody.linearVelocity = new Vector3(0f, 0f);
             moveW.Disable();
             moveS.Disable();
-            moveA.Disable();
-            moveD.Disable();
-            moveShift.Disable();
-            moveSpace.Disable();
+            moveA.Disable();   
+            moveD.Disable();    
+            moveShift.Disable();    
+            moveSpace.Disable();    
             moveCtrl.Disable();
         }
         else
         {
-            moveW.Enable();
-            moveS.Enable();
-            moveA.Enable();
+            moveW.Enable(); 
+            moveS.Enable(); 
+            moveA.Enable(); 
             moveD.Enable();
-            moveShift.Enable();
+            moveShift.Enable(); 
             moveSpace.Enable();
             moveCtrl.Enable();
         }
-
+        
         //https://www.youtube.com/watch?v=7NMsVub5NZM
         //Debug.Log(shipBody.linearVelocity.magnitude);
         //Debug.Log(shipSpeed);
-
-        // Handle boost depletion and regeneration
-        if (isBoosted)
+        if (!isBoosted && !isSlingshot) 
+        { 
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 5f); 
+        }
+        else if (isBoosted && !isSlingshot)
         {
-            StartCoroutine(DepleteBoostValue());
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 15f);
+        }
+        else if (!isBoosted && isSlingshot)
+        {
+            shipBody.AddForce(Vector3.forward * shipSpeed);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 20f);
+           
+        }
+        else if (isBoosted && isSlingshot)
+        {
+            shipBody.AddForce(Vector3.forward* shipSpeed);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 50f);
         }
 
-        // Print countdown timer in the console
-        if (countdownTimer >= 0f)
-        {
-            countdownTimer -= Time.deltaTime;
-            Debug.Log("Boost cooldown: " + Mathf.Ceil(countdownTimer) + " seconds");
-        }
-
-        // Clamp ship velocity to prevent over-speed when not boosted
-        if (!isBoosted)
-        {
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 5f);
-        }
 
         shipVariableSpeed = shipBody.linearVelocity.magnitude;
     }
-
     void FixedUpdate()
     {
-        // Movement inputs for the ship
         if (moveW.IsPressed())
         {
             shipBody.AddForce(transform.forward * shipSpeed);
@@ -112,51 +114,35 @@ public class MoveShip : MonoBehaviour
         {
             shipBody.AddForce(-transform.up * shipSpeed);
         }
-
-        // Boost logic: activated when both 'W' and 'Shift' are pressed
-        if (moveW.IsPressed() && moveShift.IsPressed() && isBoostAvailable && boost_value > 0)
+        //Created new bit so it boosts whenever keys W and Shift are both pressed at same time
+        if (moveW.IsPressed() && moveShift.IsPressed())
         {
             isBoosted = true;
-            if (!isDepleting)
-            {
-                StartCoroutine(DepleteBoostValue());
-            }
-            
-            shipSpeed += 1f;
-            shipSpeed = Mathf.Clamp(shipSpeed, 0f, 10f);  // Limit boost speed
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 15f);  // Limit boost speed
+            Stamina -= BoostCost * Time.deltaTime;
+
+
         }
         else
         {
             isBoosted = false;
         }
-    }
-
-    IEnumerator DepleteBoostValue()
-    {
-        isDepleting = true;
-        // Decrease boost_value by 1 every second while boosting is active
-        while (boost_value > 0)
+        if (Stamina < 0)
         {
-            yield return new WaitForSeconds(1f);
-            boost_value--;
-
-            // When boost_value reaches zero, stop boosting and start cooldown
-            if (boost_value <= 0)
-            {
-                isBoosted = false;  // Disable boost
-                isBoostAvailable = false;  // Disable boost availability
-                countdownTimer = boostCooldownTime;  // Set cooldown timer
-                Debug.Log("Boost depleted! Starting cooldown...");
-                yield return new WaitForSeconds(boostCooldownTime);  // Wait for the cooldown to finish
-
-                // After cooldown, regenerate boost value
-                boost_value = 10;  // Reset boost value
-                isBoostAvailable = true;  // Boost is available again
-                isDepleting = false;
-                Debug.Log("Boost available again!");
-            }
+            Stamina = 0;
+            isBoosted = false;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Slingshot")){
+            isSlingshot = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Slingshot"))
+        {
+            isSlingshot = false;
         }
     }
 }
-
