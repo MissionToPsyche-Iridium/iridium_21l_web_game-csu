@@ -71,7 +71,6 @@ public class CheckHit : MonoBehaviour
       
         if (other.CompareTag("RegenHealth"))
         {
-            Debug.Log("TRIESHFISEHFO");
             if (playerHealth == 2)
             {
                 health3.SetActive(true);
@@ -158,7 +157,6 @@ public class CheckHit : MonoBehaviour
             playerY = (Random.value - .5f) * currentMagnitude;
             camera.transform.localPosition = new Vector3(playerX + 0.1299985f, playerY + 0.7100105f, 2.41901f);
             elapsed += Time.unscaledDeltaTime;
-            Debug.Log("RUNNING");
             yield return null;
         }
         camera.transform.localPosition = new Vector3(0.1299985f, 0.7100105f, 2.41901f);
