@@ -3,7 +3,7 @@ using UnityEngine;
 public class RotateHealth : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public float rotateSpeed = 1f;
+    public float rotateSpeed = 10f;
     void Start()
     {
 

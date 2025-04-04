@@ -13,6 +13,7 @@ TagManager:
   - SlingWarning
   - RegenHealth
   - PlayerBoundary
+  - LockedRotate
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - UI
   - Ship
   - IgnoreLight
-  - 
+  - Camera
   - 
   - 
   - 
