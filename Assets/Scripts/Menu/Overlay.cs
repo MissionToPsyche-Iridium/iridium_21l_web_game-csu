@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Overlay : MonoBehaviour {
     private float TimeElapsed = 0f;
-    public static float delayTimer = spawnScript.cutsceneTime;
     public TMP_Text timerText;
     public TMP_Text distanceText;
     public TMP_Text speedometerText;
@@ -12,15 +11,15 @@ public class Overlay : MonoBehaviour {
         //Timer
         TimeElapsed += Time.deltaTime;
         float minutes = Mathf.FloorToInt(TimeElapsed / 60f);
-        float seconds = (Mathf.FloorToInt(TimeElapsed % 60f) - delayTimer);
+        float seconds = Mathf.FloorToInt(TimeElapsed % 60f);
 
-        if (seconds < 0) {
-            timerText.text = string.Format("{0:00}:{1:00}", 0, 0);
-        }
-        else {
+        if (spawnScript.cutscene == true) {
+            TimeElapsed = 0f;
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
-
+        else if (spawnScript.cutscene == false) {
+            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        }
         //Distance
         float currentDistance = DistanceToEnd.distance;
         distanceText.text = string.Format("{0:F0} m", (currentDistance - 10));

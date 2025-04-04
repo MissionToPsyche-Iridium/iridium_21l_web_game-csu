@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 6);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
      public void OptionsGame()
     {
@@ -13,12 +13,11 @@ public class MainMenu : MonoBehaviour
     }
      public void CreditsButton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+        SceneManager.LoadScene(3);
     }
-    public void QuitGame()
+    public void HowToPlay()
     {
-        Application.Quit();
-        Debug.Log("quit.");
+        SceneManager.LoadScene(7);
     }
     void Start() {
         Cursor.lockState = CursorLockMode.None;

@@ -9,10 +9,13 @@ public class PauseMenu : MonoBehaviour {
     public GameObject ResumeButton;
     public GameObject BackButton;
     public InputAction PauseGame;
+    public GameObject player;
     private bool isPaused = false;
 
 public void Resume() {
     isPaused = false;
+    Cursor.lockState = CursorLockMode.Locked;
+    player.GetComponent<RotateShip>().enabled = true;
     MenuPanel.SetActive(false);
     ResumeButton.SetActive(false);
     BackButton.SetActive(false);
@@ -23,6 +26,7 @@ public void BackToMenu(){
     Time.timeScale = 1;
 }
 void Start(){
+    Time.timeScale = 1;
     Cursor.lockState = CursorLockMode.Locked;
     MenuPanel.SetActive(false);
     ResumeButton.SetActive(false);
@@ -45,11 +49,13 @@ void Update() {
         if (isPaused){
             Time.timeScale = 0;  //pause
             Cursor.lockState = CursorLockMode.None;
-        }
+            player.GetComponent<RotateShip>().enabled = false;
+            }
         else {
             Time.timeScale = 1;  //unpause
             Cursor.lockState = CursorLockMode.Locked;
-        }
+            player.GetComponent<RotateShip>().enabled = true;
+            }
     }
 }
 }
