@@ -1,24 +1,60 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.InputSystem.Android;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class IntroText : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=8oTYabhj248
-    public TextMeshProUGUI textComponent;
+    public TextMeshProUGUI textStory1;
+    public TextMeshProUGUI textStory2;
     public string[] lines;
     public float textSpeed;
-
+    private int counter = 0;
+    public InputAction storySpace;
     private int index;
+    private bool isDialougeRunning1 = false;
+    private bool isDialougeRunning2 = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        textComponent.text = string.Empty;
-        startDialogue();
+        textStory1.text = string.Empty;
+        textStory2.text = string.Empty;
+        storySpace = InputSystem.actions.FindAction("StorySpace");
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (counter == 0)
+        {
+            if (!isDialougeRunning1)
+            {
+                startDialogue();
+            }
+            
+        }
+        else if (counter == 1)
+        {
+            if (!isDialougeRunning2)
+            {
+                StopAllCoroutines();
+                textStory1.text = string.Empty;
+                textStory2.text = string.Empty;
+                startDialogue();
+            }
+        }
+        else if (counter == 2)
+        {
+           SceneManager.LoadScene(1);
+        }
+        if (storySpace.triggered)
+        {
+            counter++;
+        }
         
     }
 
@@ -30,10 +66,28 @@ public class IntroText : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        
+        if (counter == 0)
         {
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            isDialougeRunning1 = true;
+            foreach (char c in lines[0].ToCharArray())
+            {
+                textStory1.text += c;
+                yield return new WaitForSeconds(textSpeed);
+            }
+            counter += 1;
         }
+        else if (counter == 1)
+        {
+            isDialougeRunning2 = true;
+            foreach (char c in lines[1].ToCharArray())
+            {
+                textStory2.text += c;
+                yield return new WaitForSeconds(textSpeed);
+            }
+            yield return new WaitForSeconds(5f);
+            counter += 1;
+        }
+
     }
 }
