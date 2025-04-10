@@ -578,7 +578,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39bc273e09b064243b1410b5d7e59499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textComponent: {fileID: 201475009}
+  textStory1: {fileID: 0}
+  textStory2: {fileID: 0}
   lines:
   - The year is 2042 and the Psyche spacecraft needs important maintenance. The data
     will be lost if you don't get there in time! It is now your job to reach the
@@ -588,6 +589,15 @@ MonoBehaviour:
     your spacecraft at high speeds. Your mission will be complete once you reach
     the Psyche spacecraft.
   textSpeed: 0.045
+  storySpace:
+    m_Name: Story Space
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: f408db88-95e6-4f91-bf45-7f3f7234a1f0
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &701968523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,7 +800,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 22, y: 0}
   m_SizeDelta: {x: 388.2205, y: 88.0921}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1276208462
@@ -813,7 +823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press Space to Skip
+  m_text: Click to Skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -846,7 +856,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 33
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
