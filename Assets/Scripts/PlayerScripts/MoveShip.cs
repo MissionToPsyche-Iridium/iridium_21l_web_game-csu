@@ -74,24 +74,22 @@ public class MoveShip : MonoBehaviour
         //Debug.Log(shipSpeed);
         if (!isBoosted && !isSlingshot) 
         { 
-            //5
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 9f); 
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 7f); // normal movement speed = 7
         }
         else if (isBoosted && !isSlingshot)
         {
-            //9
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 15f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 15f); //boost movement speed = 15
         }
         else if (!isBoosted && isSlingshot)
         {
             shipBody.AddForce(Vector3.forward * shipSpeed);
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f); //slingshot movement speed = 30
            
         }
         else if (isBoosted && isSlingshot)
         {
             shipBody.AddForce(Vector3.forward* shipSpeed);
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f); //slingshot movement speed while boosted still = 30
         }
 
 
