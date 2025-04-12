@@ -16,12 +16,6 @@ public class SlingshotWarning : MonoBehaviour
       
         if (other.CompareTag("SlingWarning"))
         {
-            /*
-            if (waitOn == false)
-            {
-                StartCoroutine(waitTurnOn());
-            }
-            */
             if (waitOff == false)
             {
                 StartCoroutine(waitTurnOff());
@@ -46,11 +40,5 @@ public class SlingshotWarning : MonoBehaviour
         yield return new WaitForSeconds(1f);
         waitOff = false;
     }
-    IEnumerator waitTurnOn()
-    {
-        waitOn = true;
-        yield return new WaitForSeconds(.5f);
-        textWarning.SetActive(true);
-        waitOn = false;
-    }
+
 }
