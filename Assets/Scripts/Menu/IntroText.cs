@@ -75,6 +75,7 @@ public class IntroText : MonoBehaviour
                 textStory1.text += c;
                 yield return new WaitForSeconds(textSpeed);
             }
+            yield return new WaitForSeconds(5f);
             counter += 1;
         }
         else if (counter == 1)

@@ -37,11 +37,6 @@ public class ChangePathColor : MonoBehaviour
             {
                 glowMaterial.color = Color.Lerp(glowMaterial.color, blueInvis, lerpTimer * .05f);
             }
-            else
-            {
-                glowMaterial.color = Color.Lerp(glowMaterial.color, redInvis, lerpTimer * .05f);
-
-            }
             if (!isCoroutineRunning) { 
                 StartCoroutine(WaitTime());  
             }
@@ -53,14 +48,7 @@ public class ChangePathColor : MonoBehaviour
             if (isBlue)
             {
                 lerpTimer += Time.deltaTime;
-                glowMaterial.color = Color.Lerp(glowMaterial.color, red * 2f, lerpTimer * .05f);
-                glowMaterial.SetColor("_EmissionColor", red);
-                if (!isCoroutineRunning) { StartCoroutine(WaitTime()); }
-            }
-            else if (!isBlue)
-            {
-                lerpTimer += Time.deltaTime;
-                glowMaterial.color = Color.Lerp(glowMaterial.color, blue * 2f, lerpTimer * .05f);
+                glowMaterial.color = Color.Lerp(glowMaterial.color, blue * 2f, lerpTimer * .01f);
                 glowMaterial.SetColor("_EmissionColor", blue);
                 if (!isCoroutineRunning) { StartCoroutine(WaitTime()); }
             }
@@ -83,14 +71,7 @@ public class ChangePathColor : MonoBehaviour
         }
         else if (shouldChangeColor)
         {
-            if (isBlue)
-            {
-                isBlue = false;
-            }
-            else
-            {
-                isBlue = true;
-            }
+
             shouldChangeColor = false;
             shouldFade = true;
             timer = 0.0f;
