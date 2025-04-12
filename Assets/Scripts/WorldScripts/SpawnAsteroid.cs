@@ -9,6 +9,7 @@ public class SpawnAsteroid : MonoBehaviour
     public GameObject asteroid;
     public GameObject health;
     public Transform asteroidSpawnerTransform;
+    public Transform playerPos;
     private GameObject newAsteroid;
     private GameObject newHealth;
     private Rigidbody healthRB;
@@ -16,6 +17,7 @@ public class SpawnAsteroid : MonoBehaviour
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,10 +37,14 @@ public class SpawnAsteroid : MonoBehaviour
         if (timer > waitTime)
         {
             timer -= waitTime;
-            ranX = Random.Range(-20f, 20f);
-            ranY = Random.Range(170f, 190f);
-            ranSpeed = Random.Range(3f, 15f);
-            asteroidSpawnerTransform.rotation = Quaternion.Euler(-playerRot.x + ranX, playerRot.y + ranY, 0f);
+            //ranX = Random.Range(-15f, 15f);
+            //ranY = Random.Range(175f, 185f);
+            ranX = Random.Range(-15f, 15f);
+            ranY = Random.Range(-15f, 15f);
+            ranSpeed = Random.Range(10f, 20f);
+            asteroidSpawnerTransform.LookAt(playerPos);
+            //asteroidSpawnerTransform.rotation = Quaternion.Euler(-playerRot.x + ranX, playerRot.y + ranY, 0f);
+            asteroidSpawnerTransform.rotation *= Quaternion.Euler(ranX,ranY, 0f);
             if (CheckHit.playerHealth < 3 && Random.Range(0,101) < 6)
                 {
                     spawnHealth();
@@ -71,34 +77,7 @@ public class SpawnAsteroid : MonoBehaviour
         healthRB.linearVelocity = healthRB.transform.TransformDirection(Vector3.forward * ranSpeed);
        // rotateHealth(healthRB, newHealth);
     }
-    private void rotateHealth(Rigidbody healthRB, GameObject newHealth)
-    {
-        StartCoroutine(scaleTimer());
-        IEnumerator scaleTimer()
-        {
-            for (int i = 0; i < 14; i++)
-            {
-                if (healthRB == null)
-                {
-                    break;
-                }
-                
-                yield return new WaitForSeconds(.1f);
-            }
 
-        }
-        StartCoroutine(deleteHealth());
-        IEnumerator deleteHealth()
-        {
-
-            yield return new WaitForSeconds(10f);
-            Destroy(newHealth);
-
-
-        }
-
-
-    }
     private void scaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
         StartCoroutine(scaleTimer());

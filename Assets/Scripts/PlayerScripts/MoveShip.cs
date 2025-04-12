@@ -20,8 +20,9 @@ public class MoveShip : MonoBehaviour
     private bool isBoosted = false;
     public static bool isSlingshot = false;
 
-    private float boost_value = 200;  // Starting boost value
-    private bool isBoostAvailable = true;
+    private bool isCoroutineRunning = false;
+    private float boost_value = 100;  // Starting boost value
+    private bool canRecharge = true;
     private float boostCooldownTime = 5f;  // Cooldown time after boost depletes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +35,13 @@ public class MoveShip : MonoBehaviour
         moveShift = InputSystem.actions.FindAction("MoveShift");
         moveSpace = InputSystem.actions.FindAction("MoveSpace");
         moveCtrl = InputSystem.actions.FindAction("MoveCtrl");
+        moveW.Disable();
+        moveS.Disable();
+        moveA.Disable();
+        moveD.Disable();
+        moveShift.Disable();
+        moveSpace.Disable();
+        moveCtrl.Disable();
     }
 
     // Update is called once per frame
@@ -66,34 +74,30 @@ public class MoveShip : MonoBehaviour
         //Debug.Log(shipSpeed);
         if (!isBoosted && !isSlingshot) 
         { 
-            //5
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 5f); 
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 7f); // normal movement speed = 7
         }
-        else if (isBoosted && !isSlingshot && isBoostAvailable)
+        else if (isBoosted && !isSlingshot)
         {
-            //9
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 9f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 15f); //boost movement speed = 15
         }
         else if (!isBoosted && isSlingshot)
         {
             shipBody.AddForce(Vector3.forward * shipSpeed);
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 20f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f); //slingshot movement speed = 30
            
         }
-        else if (isBoosted && isSlingshot && isBoostAvailable)
+        else if (isBoosted && isSlingshot)
         {
             shipBody.AddForce(Vector3.forward* shipSpeed);
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 24f);
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 30f); //slingshot movement speed while boosted still = 30
         }
-        else
-        {
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 5f);
-        }
+
 
         shipVariableSpeed = shipBody.linearVelocity.magnitude;
     }
     void FixedUpdate()
     {
+        Debug.Log(boost_value);
         if (moveW.IsPressed())
         {
             shipBody.AddForce(transform.forward * shipSpeed);
@@ -121,30 +125,29 @@ public class MoveShip : MonoBehaviour
         //Created new bit so it boosts whenever keys F and space-bar are both pressed at same time
           if (moveW.IsPressed() && moveShift.IsPressed())
         {
-            if (isBoostAvailable)
-            {
-                isBoosted = true;
-                boost_value = Mathf.Clamp(boost_value -= 1.5f, 0f, 200f);
-                if (boost_value < .1f)
-                {
-                    StartCoroutine(DepleteBoostValue());
-                }
-
-            }
-
+            isBoosted = true;
+            boost_value = Mathf.Clamp(boost_value - 1f, 0f, 100f);
         }
         else
         {
-
-            if (isBoostAvailable)
-            {
-
-                boost_value = Mathf.Clamp(boost_value += .5f, 0f, 200f);
-
-            }
             isBoosted = false;
+            if (canRecharge)
+            {
+                boost_value = Mathf.Clamp(boost_value + 1f, 0f, 100f);
+            }
         }
-
+          if (boost_value < 1f)
+        {
+            moveShift.Disable();
+            moveShift.Enable();
+            canRecharge = false;
+            if (!isCoroutineRunning)
+            {
+                StartCoroutine(BoostRecharge());
+            }
+            
+        }
+   
 
     }
     private void OnTriggerStay(Collider other)
@@ -160,18 +163,11 @@ public class MoveShip : MonoBehaviour
             isSlingshot = false;
         }
     }
-    IEnumerator DepleteBoostValue()
+    IEnumerator BoostRecharge()
     {
-
-        isBoostAvailable = false;  // Disable boost availability
-        Debug.Log("Boost depleted! Starting cooldown...");
-        yield return new WaitForSeconds(boostCooldownTime);  // Wait for the cooldown to finish
-
-        // After cooldown, regenerate boost value
-
-        isBoostAvailable = true;  // Boost is available again;
-        Debug.Log("Boost available again!");
-
-
+        isCoroutineRunning = true;
+        yield return new WaitForSeconds(3f);
+        canRecharge = true;
+        isCoroutineRunning = false;
     }
 }

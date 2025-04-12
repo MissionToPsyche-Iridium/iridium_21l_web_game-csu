@@ -5,17 +5,17 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
      public void OptionsGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene(2);
     }
      public void CreditsButton()
     {
         SceneManager.LoadScene(3);
     }
-    public void HowToPlay()
+    public void HowToPlayButton()
     {
         SceneManager.LoadScene(7);
     }

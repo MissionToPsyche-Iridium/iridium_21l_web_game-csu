@@ -6,6 +6,7 @@ public class DistanceToEnd : MonoBehaviour
     public GameObject Cylinder;
     public GameObject End;
     public static float distance;
+    static public bool gameWon;
 
     public void Update()
     {
@@ -14,6 +15,7 @@ public class DistanceToEnd : MonoBehaviour
 
         if(distance < 10){
             Debug.Log("Congrats!");
+            gameWon = true;
             SceneManager.LoadScene(4);
         }
     }
