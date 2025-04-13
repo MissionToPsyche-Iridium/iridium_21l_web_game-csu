@@ -706,7 +706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce01a6d6abce94479ead4edfa687f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.07
 --- !u!1001 &718605520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,7 +1083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce01a6d6abce94479ead4edfa687f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.2
 --- !u!1 &1225714230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce01a6d6abce94479ead4edfa687f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.17
 --- !u!1 &1341389782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1558,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1225714234}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: QuitGame
+        m_MethodName: HowToPlayButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1850,7 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce01a6d6abce94479ead4edfa687f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: -0.07
 --- !u!1001 &1691769571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2153,7 +2149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ce01a6d6abce94479ead4edfa687f95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 0.07
 --- !u!1 &1954208371
 GameObject:
   m_ObjectHideFlags: 0
