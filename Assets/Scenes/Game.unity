@@ -4187,7 +4187,6 @@ GameObject:
   m_Component:
   - component: {fileID: 168574506}
   - component: {fileID: 168574507}
-  - component: {fileID: 168574508}
   m_Layer: 0
   m_Name: AsteroidSpawner (11)
   m_TagString: Untagged
@@ -4228,27 +4227,6 @@ MonoBehaviour:
   health: {fileID: 3884743026520501233, guid: a734b37b09135bd4ea207d1286703a2d, type: 3}
   asteroidSpawnerTransform: {fileID: 168574506}
   playerPos: {fileID: 994505047}
---- !u!65 &168574508
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168574505}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &169958909
 GameObject:
   m_ObjectHideFlags: 0
@@ -5258,7 +5236,6 @@ GameObject:
   m_Component:
   - component: {fileID: 213731786}
   - component: {fileID: 213731785}
-  - component: {fileID: 213731787}
   m_Layer: 0
   m_Name: AsteroidSpawner (4)
   m_TagString: Untagged
@@ -5299,27 +5276,6 @@ Transform:
   - {fileID: 418272296}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &213731787
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213731784}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &216563619
 GameObject:
   m_ObjectHideFlags: 0
@@ -7626,8 +7582,6 @@ GameObject:
   m_Component:
   - component: {fileID: 318422930}
   - component: {fileID: 318422929}
-  - component: {fileID: 318422932}
-  - component: {fileID: 318422931}
   m_Layer: 0
   m_Name: AsteroidSpawner
   m_TagString: Untagged
@@ -7668,48 +7622,6 @@ Transform:
   - {fileID: 1300261068}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &318422931
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318422928}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &318422932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 318422928}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &325555177
 GameObject:
   m_ObjectHideFlags: 0
@@ -8419,10 +8331,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1307804183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -873, y: -0.7000122}
-  m_SizeDelta: {x: 0, y: -1.0999146}
+  m_SizeDelta: {x: 1720, y: 604.9001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &356556125
 MonoBehaviour:
@@ -10332,10 +10244,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PsycheAsteroid
       objectReference: {fileID: 0}
-    - target: {fileID: 4812174883865868311, guid: 134cede32d5608149ab2c626875b58eb, type: 3}
-      propertyPath: m_TagString
-      value: PsycheAsteroid
-      objectReference: {fileID: 0}
     - target: {fileID: 4837552145866331036, guid: 134cede32d5608149ab2c626875b58eb, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -10466,9 +10374,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4812174883865868311, guid: 134cede32d5608149ab2c626875b58eb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1203920102}
-    - targetCorrespondingSourceObject: {fileID: 4812174883865868311, guid: 134cede32d5608149ab2c626875b58eb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1203920104}
   m_SourcePrefab: {fileID: 100100000, guid: 134cede32d5608149ab2c626875b58eb, type: 3}
 --- !u!1 &438005226
 GameObject:
@@ -10830,7 +10735,6 @@ GameObject:
   m_Component:
   - component: {fileID: 460192987}
   - component: {fileID: 460192988}
-  - component: {fileID: 460192989}
   m_Layer: 0
   m_Name: AsteroidSpawner (9)
   m_TagString: Untagged
@@ -10871,27 +10775,6 @@ MonoBehaviour:
   health: {fileID: 3884743026520501233, guid: a734b37b09135bd4ea207d1286703a2d, type: 3}
   asteroidSpawnerTransform: {fileID: 460192987}
   playerPos: {fileID: 994505047}
---- !u!65 &460192989
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460192986}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &474773814
 GameObject:
   m_ObjectHideFlags: 0
@@ -17813,10 +17696,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1307804183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 316.80005}
-  m_SizeDelta: {x: 0, y: 1.5999146}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 315}
+  m_SizeDelta: {x: 1720, y: 652.78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &778341544
 MonoBehaviour:
@@ -22473,7 +22356,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1000175815}
   - component: {fileID: 1000175814}
-  - component: {fileID: 1000175816}
   m_Layer: 0
   m_Name: AsteroidSpawner (6)
   m_TagString: Untagged
@@ -22514,27 +22396,6 @@ Transform:
   - {fileID: 2027155769}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1000175816
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000175813}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1000652596
 GameObject:
   m_ObjectHideFlags: 0
@@ -23929,7 +23790,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1065478280}
   - component: {fileID: 1065478281}
-  - component: {fileID: 1065478282}
   m_Layer: 0
   m_Name: AsteroidSpawner (10)
   m_TagString: Untagged
@@ -23970,27 +23830,6 @@ MonoBehaviour:
   health: {fileID: 3884743026520501233, guid: a734b37b09135bd4ea207d1286703a2d, type: 3}
   asteroidSpawnerTransform: {fileID: 1065478280}
   playerPos: {fileID: 994505047}
---- !u!65 &1065478282
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065478279}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1071475873
 GameObject:
   m_ObjectHideFlags: 0
@@ -24836,7 +24675,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1101247674}
   - component: {fileID: 1101247673}
-  - component: {fileID: 1101247675}
   m_Layer: 0
   m_Name: AsteroidSpawner (1)
   m_TagString: Untagged
@@ -24877,27 +24715,6 @@ Transform:
   - {fileID: 287000991}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1101247675
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1101247672}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1117707696
 GameObject:
   m_ObjectHideFlags: 0
@@ -24961,7 +24778,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121633189}
   - component: {fileID: 1121633188}
-  - component: {fileID: 1121633190}
   m_Layer: 0
   m_Name: AsteroidSpawner (8)
   m_TagString: Untagged
@@ -25002,27 +24818,6 @@ Transform:
   - {fileID: 5278268}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1121633190
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121633187}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1129436884
 GameObject:
   m_ObjectHideFlags: 0
@@ -25055,10 +24850,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1307804183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -318}
-  m_SizeDelta: {x: 0, y: 2}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -317}
+  m_SizeDelta: {x: 1720, y: 626.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1129436886
 MonoBehaviour:
@@ -25957,35 +25752,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 27.382172
-  m_Center: {x: 2.3633213, y: -0.9094048, z: -0.7149544}
---- !u!54 &1203920104
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1203920100}
-  serializedVersion: 4
-  m_Mass: 1000
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 14
-  m_CollisionDetection: 0
+  m_Radius: 23.786129
+  m_Center: {x: -0.0000000026922269, y: 0.32331467, z: -0.7149544}
 --- !u!43 &1205195484
 Mesh:
   m_ObjectHideFlags: 0
@@ -27022,7 +26790,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1280441247}
   - component: {fileID: 1280441246}
-  - component: {fileID: 1280441248}
   m_Layer: 0
   m_Name: AsteroidSpawner (5)
   m_TagString: Untagged
@@ -27063,27 +26830,6 @@ Transform:
   - {fileID: 269189340}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1280441248
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280441245}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1288420739
 GameObject:
   m_ObjectHideFlags: 0
@@ -27522,10 +27268,10 @@ RectTransform:
   - {fileID: 1845899542}
   m_Father: {fileID: 1448083905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -200, y: -400}
+  m_SizeDelta: {x: 1720, y: 659.04}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1307804184
 MonoBehaviour:
@@ -29656,7 +29402,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1405117713}
   - component: {fileID: 1405117712}
-  - component: {fileID: 1405117714}
   m_Layer: 0
   m_Name: AsteroidSpawner (2)
   m_TagString: Untagged
@@ -29697,27 +29442,6 @@ Transform:
   - {fileID: 696782646}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1405117714
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1405117711}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1409472842
 GameObject:
   m_ObjectHideFlags: 0
@@ -29728,7 +29452,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1409472844}
   - component: {fileID: 1409472843}
-  - component: {fileID: 1409472845}
   m_Layer: 0
   m_Name: AsteroidSpawner (7)
   m_TagString: Untagged
@@ -29769,27 +29492,6 @@ Transform:
   - {fileID: 67754080}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1409472845
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409472842}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1409857547
 Mesh:
   m_ObjectHideFlags: 0
@@ -33364,7 +33066,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1567743363}
   - component: {fileID: 1567743362}
-  - component: {fileID: 1567743364}
   m_Layer: 0
   m_Name: AsteroidSpawner (3)
   m_TagString: Untagged
@@ -33405,27 +33106,6 @@ Transform:
   - {fileID: 996424943}
   m_Father: {fileID: 364045532}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!65 &1567743364
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567743361}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1568285805
 GameObject:
   m_ObjectHideFlags: 0
@@ -38460,7 +38140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146573314988285818, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       propertyPath: m_Size.z
-      value: 1.3779657
+      value: 1.3417884
       objectReference: {fileID: 0}
     - target: {fileID: 4146573314988285818, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       propertyPath: m_Center.x
@@ -38472,7 +38152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4146573314988285818, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       propertyPath: m_Center.z
-      value: 0.42167684
+      value: 0.40358862
       objectReference: {fileID: 0}
     - target: {fileID: 4803693634237829045, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       propertyPath: m_Name
@@ -38558,10 +38238,6 @@ PrefabInstance:
       propertyPath: lockedRotateRB
       value: 
       objectReference: {fileID: 754103031}
-    - target: {fileID: 8760341379193068301, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2755854453458121925, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
@@ -39191,10 +38867,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1307804183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 873, y: -0.7000122}
-  m_SizeDelta: {x: 0, y: -1.0999146}
+  m_SizeDelta: {x: 1720, y: 604.9001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1845899543
 MonoBehaviour:

@@ -97,7 +97,7 @@ public class MoveShip : MonoBehaviour
     }
     void FixedUpdate()
     {
-        //Debug.Log(boost_value);
+        Debug.Log(boost_value);
         if (moveW.IsPressed())
         {
             shipBody.AddForce(transform.forward * shipSpeed);

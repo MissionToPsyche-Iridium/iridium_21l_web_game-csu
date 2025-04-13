@@ -14,7 +14,6 @@ TagManager:
   - RegenHealth
   - PlayerBoundary
   - LockedRotate
-  - PsycheAsteroid
   layers:
   - Default
   - TransparentFX
