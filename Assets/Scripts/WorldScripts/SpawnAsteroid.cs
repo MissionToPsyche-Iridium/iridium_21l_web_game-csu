@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,7 +19,7 @@ public class SpawnAsteroid : MonoBehaviour
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
-   
+    private bool touchingPsycheAsteroid = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,7 +53,10 @@ public class SpawnAsteroid : MonoBehaviour
                 }
             else
                 {
-                    spawnAsteroid();
+                    if (!touchingPsycheAsteroid)
+                    {
+                        spawnAsteroid();
+                    }
                 }
             waitTime = Random.Range(3.0f, 10.0f);
 
@@ -104,6 +109,20 @@ public class SpawnAsteroid : MonoBehaviour
 
         }
 
-
+       
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("PsycheAsteroid"))
+        {
+            touchingPsycheAsteroid = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("PsycheAsteroid"))
+        {
+            touchingPsycheAsteroid = false;
+        }
     }
 }

@@ -75,7 +75,7 @@ public class MoveShip : MonoBehaviour
         if (!isBoosted && !isSlingshot) 
         { 
             //5
-            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 9f); 
+            shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 900f); 
         }
         else if (isBoosted && !isSlingshot)
         {
@@ -99,7 +99,7 @@ public class MoveShip : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Debug.Log(boost_value);
+        //Debug.Log(boost_value);
         if (moveW.IsPressed())
         {
             shipBody.AddForce(transform.forward * shipSpeed);

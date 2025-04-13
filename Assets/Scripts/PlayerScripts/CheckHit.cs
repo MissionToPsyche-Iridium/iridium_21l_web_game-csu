@@ -18,6 +18,7 @@ public class CheckHit : MonoBehaviour
     private float playerX;
     private float playerY;
     */
+    private bool collided = false;
     private GameObject health1;
     private GameObject health2;
     private GameObject health3;
@@ -39,7 +40,7 @@ public class CheckHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (playerHealth < 1)
         {
             SceneManager.LoadScene(5);
@@ -66,28 +67,38 @@ public class CheckHit : MonoBehaviour
         }
        
     }
+    private void FixedUpdate()
+    {
+        collided = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
-      
-        if (other.CompareTag("RegenHealth"))
+        
+        if (other.CompareTag("RegenHealth") && !collided)
         {
             if (playerHealth == 2)
             {
+                Debug.Log("HIT");
                 health3.SetActive(true);
                 playerHealth += 1;
+                
             }
             else if (playerHealth == 1)
             {
+                Debug.Log("HITHIT");
                 health2.SetActive(true);
                 playerHealth += 1;
+                
             }
+            
             Destroy(other.transform.root.gameObject);
         }
+        collided = true;
     }
     private void OnCollisionEnter(Collision collision)
     {
         
-        if (collision.collider.CompareTag("Asteroid"))
+        if (collision.collider.CompareTag("Asteroid") && !collided)
         {
 
             //checks if player is already hit, if so stop previous camera shake and start a new one
@@ -112,10 +123,12 @@ public class CheckHit : MonoBehaviour
 
 
             }
+            
             newParticles = Instantiate(explosionParticles, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
             //Debug.Log("REACHED");
             Destroy(collision.gameObject);
         }
+        collided = true;
 
 
     }
