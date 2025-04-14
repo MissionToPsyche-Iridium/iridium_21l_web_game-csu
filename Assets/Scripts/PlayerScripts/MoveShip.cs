@@ -21,7 +21,7 @@ public class MoveShip : MonoBehaviour
     public static bool isSlingshot = false;
 
     private bool isCoroutineRunning = false;
-    private float boost_value = 100;  // Starting boost value
+    public static float boost_value = 100;  // Starting boost value
     private bool canRecharge = true;
     private float boostCooldownTime = 5f;  // Cooldown time after boost depletes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
