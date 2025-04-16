@@ -6,7 +6,7 @@ public class DistanceToEnd : MonoBehaviour
     public GameObject Cylinder;
     public GameObject End;
     public static float distance;
-    static public bool gameWon;
+    public static bool gameWon;
 
     public void Update()
     {

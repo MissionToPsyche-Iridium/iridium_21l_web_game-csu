@@ -28,12 +28,12 @@ public class Overlay : MonoBehaviour {
             timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
         //Distance
-        float currentDistance = DistanceToEnd.distance; //distance from player to end goal
-        distanceText.text = string.Format("{0:F0} m", (currentDistance - 10));
+        float currentDistance = (DistanceToEnd.distance * 150); //distance from player to end goal
+        distanceText.text = string.Format("{0:F0} km", (currentDistance - 10));
 
         //Speedometer
-        float currentSpeed = MoveShip.shipVariableSpeed; //speed player is currently moving at
-        speedometerText.text = string.Format("{0:F1} m/s", currentSpeed);
+        float currentSpeed = (MoveShip.shipVariableSpeed * 150); //speed player is currently moving at
+        speedometerText.text = string.Format("{0:F1} km/s", currentSpeed);
     }
 }
 
