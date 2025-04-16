@@ -20,10 +20,10 @@ public class MoveShip : MonoBehaviour
     public static float shipVariableSpeed = 0f;
     private bool isBoosted = false;
     public static bool isSlingshot = false;
-
     private bool isCoroutineRunning = false;
     public static float boost_value = 100;  // Starting boost value
     private bool canRecharge = true;
+    private Coroutine restartCoroutine;
     private float boostCooldownTime = 5f;  // Cooldown time after boost depletes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -74,10 +74,16 @@ public class MoveShip : MonoBehaviour
         if (moveShift.WasReleasedThisFrame() && boost_value >= 1f)
         {
             isBoosted = false;
-
+            if (restartCoroutine != null)
+            {
+                StopCoroutine(restartCoroutine);
+                isCoroutineRunning = false;
+                Debug.Log("Stop Coroutine");
+            }
             if (!isCoroutineRunning)
             {
-                StartCoroutine(BoostRecharge());
+
+                restartCoroutine = StartCoroutine(BoostRecharge());
 
             }
 
@@ -123,7 +129,7 @@ public class MoveShip : MonoBehaviour
     }
     void FixedUpdate()
     {
-        Debug.Log(boost_value);
+        //Debug.Log(boost_value);
         if (moveW.IsPressed())
         {
             shipBody.AddForce(transform.forward * shipSpeed);

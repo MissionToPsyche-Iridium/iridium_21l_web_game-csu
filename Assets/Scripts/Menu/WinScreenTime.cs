@@ -11,7 +11,7 @@ public class WinScreenTime: MonoBehaviour {
             TimeTakenText.text = string.Format("Time Taken: {0:00}:{1:00}", minutesTaken, secondsTaken);
         }
         else 
-            TimeTakenText.text = "";
+            TimeTakenText.text = ""; //are you sure
     }
 }
 
