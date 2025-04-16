@@ -14,6 +14,7 @@ TagManager:
   - RegenHealth
   - PlayerBoundary
   - LockedRotate
+  - PathEnd
   layers:
   - Default
   - TransparentFX
