@@ -2,7 +2,6 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 public class WinScreenTime: MonoBehaviour {
-    private float TimeElapsed = 0f;
     public TMP_Text TimeTakenText;
     float minutesTaken = Overlay.minutes;
     float secondsTaken = Overlay.seconds;

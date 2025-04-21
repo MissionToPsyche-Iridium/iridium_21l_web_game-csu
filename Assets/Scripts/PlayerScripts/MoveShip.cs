@@ -24,7 +24,6 @@ public class MoveShip : MonoBehaviour
     public static float boost_value = 100;  // Starting boost value
     private bool canRecharge = true;
     private Coroutine restartCoroutine;
-    private float boostCooldownTime = 5f;  // Cooldown time after boost depletes
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

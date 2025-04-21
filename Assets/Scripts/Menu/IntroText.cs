@@ -13,7 +13,6 @@ public class IntroText : MonoBehaviour
     public float textSpeed;
     private int counter = 0;
     public InputAction storySpace;
-    private int index;
     private bool isDialougeRunning1 = false;
     private bool isDialougeRunning2 = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -60,7 +59,6 @@ public class IntroText : MonoBehaviour
 
     void startDialogue()
     {
-        index = 0;
         StartCoroutine(TypeLine());
     }
 

@@ -18,6 +18,7 @@ public class CheckHit : MonoBehaviour
     private float playerX;
     private float playerY;
     */
+    private int preventDuplicateColCount = 0;
     private GameObject health1;
     private GameObject health2;
     private GameObject health3;
@@ -30,6 +31,7 @@ public class CheckHit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        DistanceToEnd.gameWon = false;
         playerHealth = 3;
         health1 = GameObject.FindGameObjectWithTag("Health1");
         health2 = GameObject.FindGameObjectWithTag("Health2");
@@ -39,10 +41,19 @@ public class CheckHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        preventDuplicateColCount = 0;
         if (playerHealth < 1)
         {
-            SceneManager.LoadScene(5);
+            if (MainMenu.isEndlessMode)
+            {
+                DistanceToEnd.gameWon = true;
+                SceneManager.LoadScene(10);
+            }
+            else
+            {
+                SceneManager.LoadScene(5);
+            }
+            
         }
 
         if (MoveShip.isSlingshot) 
@@ -86,37 +97,40 @@ public class CheckHit : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        
+
         if (collision.collider.CompareTag("Asteroid"))
         {
-
-            //checks if player is already hit, if so stop previous camera shake and start a new one
-            if (isHit)
+            preventDuplicateColCount += 1;
+            if (preventDuplicateColCount < 2)
             {
-                StopCoroutine(timer);
-            }
+                //checks if player is already hit, if so stop previous camera shake and start a new one
+                if (isHit)
+                {
+                    StopCoroutine(timer);
+                }
 
-            timer = StartCoroutine(ShakeCamera(1f));
-            playerHealth -= 1;
-            if (playerHealth == 2)
-            {
-                health3.SetActive(false);
-            }
-            else if (playerHealth == 1)
-            {
-                health2.SetActive(false);
-            }
-            else if (playerHealth == 0)
-            {
-                health1.SetActive(false);
+                timer = StartCoroutine(ShakeCamera(1f));
+                playerHealth -= 1;
+                if (playerHealth == 2)
+                {
+                    health3.SetActive(false);
+                }
+                else if (playerHealth == 1)
+                {
+                    health2.SetActive(false);
+                }
+                else if (playerHealth == 0)
+                {
+                    health1.SetActive(false);
 
 
+                }
+                newParticles = Instantiate(explosionParticles, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
+ 
+                Destroy(collision.gameObject);
             }
-            newParticles = Instantiate(explosionParticles, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
-            //Debug.Log("REACHED");
-            Destroy(collision.gameObject);
         }
-
+       
 
     }
     //https://www.youtube.com/watch?v=lq7y0thMN1M

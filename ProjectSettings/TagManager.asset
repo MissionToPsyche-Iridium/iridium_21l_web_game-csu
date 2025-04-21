@@ -15,6 +15,7 @@ TagManager:
   - PlayerBoundary
   - LockedRotate
   - PathEnd
+  - PsycheAsteroid
   layers:
   - Default
   - TransparentFX

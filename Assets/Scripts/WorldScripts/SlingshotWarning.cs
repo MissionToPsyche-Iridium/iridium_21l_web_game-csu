@@ -4,9 +4,7 @@ using UnityEngine;
 public class SlingshotWarning : MonoBehaviour
 {
     public GameObject textWarning;
-    private bool waitOn = false;
     private bool waitOff = false;
-    private int counter = 0;
     public void Start()
     {
         textWarning.SetActive(false);

@@ -11,8 +11,6 @@ public class spawnScript : MonoBehaviour
     private Transform posT2;
     private Transform posCam;
     public Rigidbody lockedRotateRB;
-    private bool pos1Done = false;
-    private float waitTime = 2f;
     private float timer = 0.0f;
     public static float cutsceneTime = 5.3f;
     public static bool cutscene = true;

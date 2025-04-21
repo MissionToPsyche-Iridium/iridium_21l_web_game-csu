@@ -3,11 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public static bool isEndlessMode = false;
     public void PlayGame()
     {
+        isEndlessMode = false;
         SceneManager.LoadScene(6);
     }
-     public void OptionsGame()
+    public void PlayEndless()
+    {
+        isEndlessMode = true;
+        SceneManager.LoadScene(8);
+    }
+    public void PlaySelectMode()
+    {
+        SceneManager.LoadScene(9);
+    }
+    public void OptionsGame()
     {
         SceneManager.LoadScene(2);
     }

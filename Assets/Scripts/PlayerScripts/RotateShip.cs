@@ -14,7 +14,6 @@ public class RotateShip : MonoBehaviour
     public Rigidbody lockedRotateRB;
     private float waitTime = 1f;
     private float timer = 0.0f;
-    private float ranX, ranY, ranSpeed = 0.0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
