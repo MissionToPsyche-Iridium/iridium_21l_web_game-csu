@@ -7,7 +7,6 @@ public class PlayerInsideBoundary : MonoBehaviour
     private bool startTime = false;
     private float waitTime = 10.2f;
     private float timer = 0f;
-    private int skipFirstCheck = 0;
     float timeLeft;
     public TMP_Text OutOfBoundsWarning;
     public TMP_Text OutOfBoundsTime;

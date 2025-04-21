@@ -32,6 +32,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: cc24a5492e2fec140a1dfe6b523b8e68
+  - enabled: 1
+    path: Assets/Scenes/EndlessMode.unity
+    guid: 32324cca3bdb92c41814bf8a0dd92b5e
+  - enabled: 1
+    path: Assets/Scenes/SelectMode.unity
+    guid: ee337e496ae611c46aa2b4699cb1fe2d
+  - enabled: 1
+    path: Assets/Scenes/EndScreenLossEndless.unity
+    guid: 73eae606d49eeab4a9549df84d3df63c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

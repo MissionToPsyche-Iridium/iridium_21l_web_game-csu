@@ -10,6 +10,7 @@ public class PsycheFacts : MonoBehaviour
 {
     //https://www.youtube.com/watch?v=8oTYabhj248
     public TextMeshProUGUI textComponent;
+    public GameObject slingshotText;
     public string[] lines;
     public float textSpeed;
     public GameObject marsSlingshotBoundary;
@@ -18,6 +19,7 @@ public class PsycheFacts : MonoBehaviour
     public Button understoodButton;
     public GameObject UIPanel;
     public GameObject overlay;
+    private int preventDuplicateColCount = 0;
     private float tempSensitivity;
     Dictionary<int, string> psycheFacts = new Dictionary<int, string>()
     {
@@ -63,14 +65,15 @@ public class PsycheFacts : MonoBehaviour
         {
             tempList.Add(numPicker[j]);
         }
-
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (isTextDone)
+        preventDuplicateColCount = 0;
+        if (isTextDone)
         {
             Cursor.lockState = CursorLockMode.None;
             understoodButton.gameObject.SetActive(true);
@@ -86,28 +89,35 @@ public class PsycheFacts : MonoBehaviour
         UIPanel.SetActive(false);
         GetComponent<RotateShip>().enabled = true;
         overlay.GetComponent<PauseMenu>().enabled = true;
+        //slingshotText.enabled = true;
         Time.timeScale = 1f;
     }
     private void OnCollisionEnter(Collision collision)
     {
-       
+
         if (collision.collider.CompareTag("Asteroid"))
         {
-            if(CheckHit.playerHealth != 0){
-            GetComponent<RotateShip>().enabled = false;
-            overlay.GetComponent<PauseMenu>().enabled = false;
-            int tempIndex = 0;
-            i = UnityEngine.Random.Range(0, tempList.Count);
-            tempIndex = tempList[i];
-            textComponent.text = string.Empty;
-            lines[0] = psycheFacts[tempIndex];
-            startDialogue();
-            UIPanel.SetActive(true);
-            MoveShip.isSlingshot = false;
-            //marsSlingshotBoundary.transform.position = new Vector3(0, 1000f);
-            Time.timeScale = 0;
-            
-            tempList.RemoveAt(i);
+            preventDuplicateColCount += 1;
+            if (preventDuplicateColCount < 2)
+            {
+                if (CheckHit.playerHealth != 0)
+                {
+                    GetComponent<RotateShip>().enabled = false;
+                    overlay.GetComponent<PauseMenu>().enabled = false;
+                    slingshotText.SetActive(false);
+                    int tempIndex = 0;
+                    i = UnityEngine.Random.Range(0, tempList.Count);
+                    tempIndex = tempList[i];
+                    textComponent.text = string.Empty;
+                    lines[0] = psycheFacts[tempIndex];
+                    startDialogue();
+                    UIPanel.SetActive(true);
+                    MoveShip.isSlingshot = false;
+                    //marsSlingshotBoundary.transform.position = new Vector3(0, 1000f);
+                    Time.timeScale = 0;
+
+                    tempList.RemoveAt(i);
+                }
             }
         }
         if (tempList.Count == 0)

@@ -12,6 +12,13 @@ public class EndScreens : MonoBehaviour
     }
     public void TryAgain()
     {
-        SceneManager.LoadScene(1);
+        if (MainMenu.isEndlessMode)
+        {
+            SceneManager.LoadScene(8);
+        }
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 }

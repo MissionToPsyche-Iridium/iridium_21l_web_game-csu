@@ -14,6 +14,7 @@ public class SpawnAsteroid : MonoBehaviour
     private GameObject newHealth;
     private Rigidbody healthRB;
     private Rigidbody asteroidRB;
+    private bool inPsyche = false;
     private float waitTime = 0f;
     private float timer = 0.0f;
     private float ranX, ranY,ranSpeed = 0.0f;
@@ -39,19 +40,27 @@ public class SpawnAsteroid : MonoBehaviour
             timer -= waitTime;
             //ranX = Random.Range(-15f, 15f);
             //ranY = Random.Range(175f, 185f);
-            ranX = Random.Range(-15f, 15f);
-            ranY = Random.Range(-15f, 15f);
-            ranSpeed = Random.Range(10f, 20f);
+            ranX = Random.Range(-7f, 7f);
+            ranY = Random.Range(-7f, 7f);
+            ranSpeed = Random.Range(20f, 30f); //10 20
             asteroidSpawnerTransform.LookAt(playerPos);
             //asteroidSpawnerTransform.rotation = Quaternion.Euler(-playerRot.x + ranX, playerRot.y + ranY, 0f);
             asteroidSpawnerTransform.rotation *= Quaternion.Euler(ranX,ranY, 0f);
             if (CheckHit.playerHealth < 3 && Random.Range(0,101) < 6)
                 {
-                    spawnHealth();
+                    if (!inPsyche)
+                    {
+                        spawnHealth();
+                    }
+                    
                 }
             else
                 {
-                    spawnAsteroid();
+                    if (!inPsyche)
+                    {
+                        spawnAsteroid();
+                    }
+                    
                 }
             waitTime = Random.Range(3.0f, 10.0f);
 
@@ -77,7 +86,21 @@ public class SpawnAsteroid : MonoBehaviour
         healthRB.linearVelocity = healthRB.transform.TransformDirection(Vector3.forward * ranSpeed);
        // rotateHealth(healthRB, newHealth);
     }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("PsycheAsteroid"))
+        {
+            inPsyche = true;
+        }
+    }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("PsycheAsteroid"))
+        {
+            inPsyche = false;
+        }
+    }
     private void scaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
         StartCoroutine(scaleTimer());

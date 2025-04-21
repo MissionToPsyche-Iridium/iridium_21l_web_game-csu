@@ -18,7 +18,7 @@ public class AudioBetweenScenes : MonoBehaviour
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        if (scene.name == "Game"){ 
+        if (scene.name == "Game" || scene.name == "EndlessMode"){ 
             Destroy(gameObject); //audio should stop when player starts the game (presses start)
         }
     }
