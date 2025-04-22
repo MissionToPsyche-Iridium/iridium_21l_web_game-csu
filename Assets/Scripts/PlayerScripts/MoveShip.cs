@@ -23,6 +23,7 @@ public class MoveShip : MonoBehaviour
     private bool isCoroutineRunning = false;
     public static float boost_value = 100;  // Starting boost value
     private bool canRecharge = true;
+    private bool didSlingshotSoundPlay = false;
     private Coroutine restartCoroutine;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -103,27 +104,30 @@ public class MoveShip : MonoBehaviour
         //https://www.youtube.com/watch?v=7NMsVub5NZM
         //Debug.Log(shipBody.linearVelocity.magnitude);
         //Debug.Log(shipSpeed);
+        //https://docs.unity3d.com/6000.0/Documentation/ScriptReference/BoxCollider.html
         if (!isBoosted && !isSlingshot) // numbers are rounded oddly to make UI look better (for example: 1000/150 = 6.66667, in which 150 = km * in-game distance to Psyche)
         { 
+            shipCenter.GetComponent<BoxCollider>().enabled = true;
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 6.66667f); // normal movement speed = 6.66667
         }
         else if (isBoosted && !isSlingshot)
         {
+            shipCenter.GetComponent<BoxCollider>().enabled = true;
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 16.66667f); //boost movement speed = 16.66667
         }
         else if (!isBoosted && isSlingshot)
         {
+            shipCenter.GetComponent<BoxCollider>().enabled = false;
             shipBody.AddForce(Vector3.forward * shipSpeed);
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 33.33333f); //slingshot movement speed = 33.33333
            
         }
         else if (isBoosted && isSlingshot)
         {
+            shipCenter.GetComponent<BoxCollider>().enabled = false;
             shipBody.AddForce(Vector3.forward* shipSpeed);
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 33.33333f); //slingshot movement speed while boosted still = 33.33333
         }
-
-
         shipVariableSpeed = shipBody.linearVelocity.magnitude;
     }
     void FixedUpdate()
@@ -166,6 +170,13 @@ public class MoveShip : MonoBehaviour
             boost_value = Mathf.Clamp(boost_value + 1f, 0f, 100f);
         }
         
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Slingshot")){
+            GameAudio.PlaySlingshotSound();
+            didSlingshotSoundPlay = true;
+        }
     }
     private void OnTriggerStay(Collider other)
     {

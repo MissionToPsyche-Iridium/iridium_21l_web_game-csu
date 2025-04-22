@@ -42,7 +42,7 @@ public class SpawnAsteroid : MonoBehaviour
             //ranY = Random.Range(175f, 185f);
             ranX = Random.Range(-7f, 7f);
             ranY = Random.Range(-7f, 7f);
-            ranSpeed = Random.Range(20f, 30f); //10 20
+            ranSpeed = Random.Range(15f, 25f); //10 20
             asteroidSpawnerTransform.LookAt(playerPos);
             //asteroidSpawnerTransform.rotation = Quaternion.Euler(-playerRot.x + ranX, playerRot.y + ranY, 0f);
             asteroidSpawnerTransform.rotation *= Quaternion.Euler(ranX,ranY, 0f);

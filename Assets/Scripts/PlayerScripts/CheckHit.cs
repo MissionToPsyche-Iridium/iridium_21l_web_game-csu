@@ -82,6 +82,10 @@ public class CheckHit : MonoBehaviour
       
         if (other.CompareTag("RegenHealth"))
         {
+            preventDuplicateColCount += 1;
+            if (preventDuplicateColCount < 2)
+            {
+            GameAudio.PlayHealSound();
             if (playerHealth == 2)
             {
                 health3.SetActive(true);
@@ -93,6 +97,7 @@ public class CheckHit : MonoBehaviour
                 playerHealth += 1;
             }
             Destroy(other.transform.root.gameObject);
+        }
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -110,6 +115,7 @@ public class CheckHit : MonoBehaviour
                 }
 
                 timer = StartCoroutine(ShakeCamera(1f));
+                GameAudio.PlayHitSounds();
                 playerHealth -= 1;
                 if (playerHealth == 2)
                 {
@@ -122,7 +128,6 @@ public class CheckHit : MonoBehaviour
                 else if (playerHealth == 0)
                 {
                     health1.SetActive(false);
-
 
                 }
                 newParticles = Instantiate(explosionParticles, collision.gameObject.transform.position, collision.gameObject.transform.rotation);
