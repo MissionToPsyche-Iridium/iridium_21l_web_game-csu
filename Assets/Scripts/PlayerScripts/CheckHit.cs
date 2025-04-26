@@ -9,15 +9,10 @@ using UnityEngine.SceneManagement;
 
 public class CheckHit : MonoBehaviour
 {
+    //initialize vars
     public ParticleSystem explosionParticles;
     private ParticleSystem newParticles;
     public new Camera camera;
-    /*
-    private float elapsed = 0f;
-    private float currentMagnitude = 1f;
-    private float playerX;
-    private float playerY;
-    */
     private int preventDuplicateColCount = 0;
     private GameObject health1;
     private GameObject health2;
@@ -31,6 +26,7 @@ public class CheckHit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //set game won to false at start, and initialize start values
         DistanceToEnd.gameWon = false;
         playerHealth = 3;
         health1 = GameObject.FindGameObjectWithTag("Health1");
@@ -41,6 +37,7 @@ public class CheckHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //check if player out of lives, if true load lose scene
         preventDuplicateColCount = 0;
         if (playerHealth < 1)
         {
@@ -55,7 +52,7 @@ public class CheckHit : MonoBehaviour
             }
             
         }
-
+        //if in mars slingshot, shake camera
         if (MoveShip.isSlingshot) 
         {
             if (firstCheck == 0)
@@ -79,7 +76,7 @@ public class CheckHit : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-      
+        //if player collides with a heart, add one life, play audio, and check var to make sure only one collision is counted due to collision bugs
         if (other.CompareTag("RegenHealth"))
         {
             preventDuplicateColCount += 1;
@@ -102,7 +99,7 @@ public class CheckHit : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
+        //if player collides with a meteoroid, subtract one heart, with a check var to make sure only one collision is counted due to collision bugs, player audio, and spawn explosion particles.
         if (collision.collider.CompareTag("Asteroid"))
         {
             preventDuplicateColCount += 1;
@@ -138,6 +135,7 @@ public class CheckHit : MonoBehaviour
        
 
     }
+    //camera shake was programmed following this tutorial with minor tweaks
     //https://www.youtube.com/watch?v=lq7y0thMN1M
     IEnumerator ShakeCamera(float duration)
     {
@@ -163,6 +161,8 @@ public class CheckHit : MonoBehaviour
         camera.transform.localPosition = new Vector3(0.1299985f, 0.7100105f, 2.41901f);
 
     }
+    //camera shake was programmed following this tutorial with minor tweaks
+    //https://www.youtube.com/watch?v=lq7y0thMN1M
     IEnumerator ShakeCameraSlingshot(float duration)
     {
 
