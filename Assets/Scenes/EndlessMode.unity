@@ -591,8 +591,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -659,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -28, y: 36.2}
+  m_AnchoredPosition: {x: -24.2, y: 35.19995}
   m_SizeDelta: {x: 284.8, y: 50}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &37916449
@@ -5859,15 +5859,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 475b8d61d51989649b50f23346f8edae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {fileID: 994505047}
-  playerPositionVector: {x: 0, y: 0, z: 0}
+  audioSourceBoost: {fileID: 0}
+  audioSourceHit1: {fileID: 0}
+  audioSourceHit2: {fileID: 0}
+  audioSourceSlingshot: {fileID: 0}
+  audioSourceHeal: {fileID: 0}
   boost: {fileID: 8300000, guid: 249e23b6c3008ac458cf7aa1e76138d5, type: 3}
-  healthIsNow2: {fileID: 8300000, guid: f9524483497a23c44bfeffc4b6866c73, type: 3}
-  healthIsNow3: {fileID: 8300000, guid: 6d0455d767124d848852a81cd42b5fab, type: 3}
   hit1: {fileID: 8300000, guid: c066baa20f13fbe4b8388bb66df08be7, type: 3}
   hit2: {fileID: 8300000, guid: fc5b38a341119a044af6786a445086fd, type: 3}
   slingshot: {fileID: 8300000, guid: 4904b99eae06be3459e502b31e1e8d28, type: 3}
-  hasPlayed: 0
+  heal: {fileID: 0}
 --- !u!4 &750279477
 Transform:
   m_ObjectHideFlags: 0
@@ -6013,7 +6014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mars'' Slingshot Incoming!
+  m_text: 'Mars Slingshot Incoming!
 
     Prepare For High Speeds!'
   m_isRightToLeft: 0
@@ -6339,7 +6340,7 @@ GameObject:
   - component: {fileID: 801391543}
   - component: {fileID: 801391542}
   - component: {fileID: 801391541}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: ControlPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6984,8 +6985,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7052,7 +7053,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -30.4, y: -10.1}
+  m_AnchoredPosition: {x: -22.5, y: 17.400024}
   m_SizeDelta: {x: 301, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &849371930
@@ -12035,8 +12036,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 0
+  m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12103,7 +12104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -32.8, y: 18.4}
+  m_AnchoredPosition: {x: -24.899998, y: 17.400024}
   m_SizeDelta: {x: 294.7147, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1630184828
@@ -12566,7 +12567,7 @@ Transform:
   m_GameObject: {fileID: 1715722724}
   serializedVersion: 2
   m_LocalRotation: {x: 0.30070576, y: -0, z: -0, w: 0.953717}
-  m_LocalPosition: {x: 0.23800004, y: 0.29353, z: 3.1725}
+  m_LocalPosition: {x: 0.23800004, y: 0.2975, z: 3.1668}
   m_LocalScale: {x: 0.34414402, y: 0.023972893, z: 0.005937593}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13792,7 +13793,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1870318371
