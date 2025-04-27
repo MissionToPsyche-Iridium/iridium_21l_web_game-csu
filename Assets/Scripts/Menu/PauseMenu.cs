@@ -12,7 +12,7 @@ public class PauseMenu : MonoBehaviour {
     public GameObject player;
     private bool isPaused = false;
 
-public void Resume() {
+public void Resume() { //when player resumes, isPaused becomes false, the cursor does not show up, the buttons do not function, and the timescale is set back to 1
     isPaused = false;
     Cursor.lockState = CursorLockMode.Locked;
     player.GetComponent<RotateShip>().enabled = true;
@@ -21,11 +21,11 @@ public void Resume() {
     BackButton.SetActive(false);
     Time.timeScale = 1;
 }
-public void BackToMenu(){
+public void BackToMenu(){ //if player clicks back to menu button, they go back to the menu
     SceneManager.LoadScene(0);
     Time.timeScale = 1;
 }
-void Start(){
+void Start(){ //default is timescale 1, the cursor is not displayed, and the menu buttons are not present
     Time.timeScale = 1;
     Cursor.lockState = CursorLockMode.Locked;
     MenuPanel.SetActive(false);
@@ -39,7 +39,7 @@ private void OnEnable() {
 private void OnDisable() {
     PauseGame.Disable();
 }
-void Update() {
+void Update() { //if paused, the menu shows up and the timescale is stopped. the players cursor also shows up in order to press the buttons and the game won't let you rotate the ship
     if (PauseGame.WasPressedThisFrame()){
         isPaused = !isPaused;
         MenuPanel.SetActive(isPaused);

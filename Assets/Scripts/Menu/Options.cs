@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Options : MonoBehaviour
 {
-    public void Back()
+    public void Back() //back to menu button for options menu
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
-    }
-     public void Volume()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 }
