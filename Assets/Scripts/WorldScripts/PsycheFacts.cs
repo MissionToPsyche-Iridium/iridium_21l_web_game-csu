@@ -8,6 +8,8 @@ using UnityEngine.InputSystem.Controls;
 using UnityEngine.UI;
 public class PsycheFacts : MonoBehaviour
 {
+    //initialize vars
+    //this was used to figure out how to iterate dialogue
     //https://www.youtube.com/watch?v=8oTYabhj248
     public TextMeshProUGUI textComponent;
     public GameObject slingshotText;
@@ -21,6 +23,7 @@ public class PsycheFacts : MonoBehaviour
     public GameObject overlay;
     private int preventDuplicateColCount = 0;
     private float tempSensitivity;
+    //initialize dictionary of all Psyche Facts
     Dictionary<int, string> psycheFacts = new Dictionary<int, string>()
     {
         {1, "By August 2029 the Psyche spacecraft will begin exploring the asteroid that scientists think - because of its high metal content - may be the partial core of a planetesimal, a building block of an early planet." },
@@ -51,12 +54,14 @@ public class PsycheFacts : MonoBehaviour
         {26, "The asteroid Psyche takes 5 Earth years to complete one full solar orbit (its year)." },
         {27, "The Psyche spacecraft's magnetometer will look for evidence of an ancient magnetic field at asteroid Psyche, and confirmation of a remanent magnetic field at the asteroid Psyche would be strong evidence that the asteroid formed from the core of a planetary body." }
     };
+    //used to determine which fact to pull
     private List<int> numPicker = new List<int>{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27};
     private List<int> tempList = new List<int>();
     int i = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //set vars, and initialize temp list
         GetComponent<RotateShip>().enabled = true;
         overlay.GetComponent<PauseMenu>().enabled = true;
         understoodButton.gameObject.SetActive(false);
@@ -72,6 +77,7 @@ public class PsycheFacts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //prevent duplicate collisions, and if text is done unlock cursor and understood button appears.
         preventDuplicateColCount = 0;
         if (isTextDone)
         {
@@ -79,7 +85,7 @@ public class PsycheFacts : MonoBehaviour
             understoodButton.gameObject.SetActive(true);
         }
     }
-
+    //code for if understood button is clicked, disappear cursor, get rid of text on screne from fact and ui and unpause game.
     public void understoodButtonFunct()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -94,7 +100,7 @@ public class PsycheFacts : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
+        //if player collided with meteoroid, spawn a fact by randomly choosing one from dictionary and pause the game. remove the number from list so same fact cant be repeated.
         if (collision.collider.CompareTag("Asteroid"))
         {
             preventDuplicateColCount += 1;
@@ -120,6 +126,7 @@ public class PsycheFacts : MonoBehaviour
                 }
             }
         }
+        //if list = 0, reset the list to fill the queue back up with facts
         if (tempList.Count == 0)
         {
             for (int j = 0; j < 27; j++)
@@ -128,12 +135,13 @@ public class PsycheFacts : MonoBehaviour
             }
         }
     }
-
+    //start typeline with index at 0
     void startDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
     }
+    //iterate through each character and add to text component so it appears on screen.
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray())
@@ -141,7 +149,6 @@ public class PsycheFacts : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSecondsRealtime(textSpeed);
         }
-        Debug.Log("DONE");
         isTextDone = true;
     }
 }

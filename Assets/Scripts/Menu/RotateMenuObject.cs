@@ -12,7 +12,9 @@ public class RotateMenuObject : MonoBehaviour {
         transform.eulerAngles = new Vector3(xRotation + 270,yRotation,zRotation);
     }
     void Update() {
-        Debug.Log(xRotation.ToString() + " " + yRotation.ToString() + " " + zRotation.ToString());
+        
+        
+        //Debug.Log(xRotation.ToString() + " " + yRotation.ToString() + " " + zRotation.ToString());
         xRotation = transform.localRotation.x;
         yRotation = transform.localRotation.y;
         zRotation = transform.localRotation.z;

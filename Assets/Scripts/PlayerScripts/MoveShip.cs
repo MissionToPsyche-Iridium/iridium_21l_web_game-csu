@@ -1,10 +1,14 @@
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 public class MoveShip : MonoBehaviour
 {
+    public TextAsset JSONFile;
+    //initialize vars
     public GameObject shipCenter;
     public InputAction moveW;
     public InputAction moveS;
@@ -16,7 +20,6 @@ public class MoveShip : MonoBehaviour
     public InputAction moveSpace;
     public InputAction moveCtrl;
     public Rigidbody shipBody;
-    public static float shipSpeed = 5;
     public static float shipVariableSpeed = 0f;
     private bool isBoosted = false;
     public static bool isSlingshot = false;
@@ -25,9 +28,13 @@ public class MoveShip : MonoBehaviour
     private bool canRecharge = true;
     private bool didSlingshotSoundPlay = false;
     private Coroutine restartCoroutine;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        //set vars equal and make sure they're disabled on loadup to prevent bugs during cutscene.
         isSlingshot = false;
         moveW = InputSystem.actions.FindAction("MoveW");
         moveS = InputSystem.actions.FindAction("MoveS");
@@ -49,6 +56,7 @@ public class MoveShip : MonoBehaviour
     void Update()
     {
 
+        //if cutscene is playing, disable all movement, if not enable all movement
         if (spawnScript.cutscene)
         {
             shipBody.linearVelocity = new Vector3(0f, 0f);
@@ -70,7 +78,7 @@ public class MoveShip : MonoBehaviour
             moveSpace.Enable();
             moveCtrl.Enable();
         }
-
+        //if left shift or boost was released, start timer for boost regen
         if (moveShift.WasReleasedThisFrame() && boost_value >= 1f)
         {
             isBoosted = false;
@@ -78,7 +86,6 @@ public class MoveShip : MonoBehaviour
             {
                 StopCoroutine(restartCoroutine);
                 isCoroutineRunning = false;
-                Debug.Log("Stop Coroutine");
             }
             if (!isCoroutineRunning)
             {
@@ -88,7 +95,7 @@ public class MoveShip : MonoBehaviour
             }
 
         }
-
+        //if boost is empty, start timer for boost regen.
         if (boost_value < 1f)
         {
             moveShift.Disable();
@@ -100,10 +107,8 @@ public class MoveShip : MonoBehaviour
             }
 
         }
-
+        //these helped in the process of creating and limiting the ships movement, but each if statement sets the speed of the ship for different player inputs.
         //https://www.youtube.com/watch?v=7NMsVub5NZM
-        //Debug.Log(shipBody.linearVelocity.magnitude);
-        //Debug.Log(shipSpeed);
         //https://docs.unity3d.com/6000.0/Documentation/ScriptReference/BoxCollider.html
         if (!isBoosted && !isSlingshot) // numbers are rounded oddly to make UI look better (for example: 1000/150 = 6.66667, in which 150 = km * in-game distance to Psyche)
         { 
@@ -118,53 +123,53 @@ public class MoveShip : MonoBehaviour
         else if (!isBoosted && isSlingshot)
         {
             shipCenter.GetComponent<BoxCollider>().enabled = false;
-            shipBody.AddForce(Vector3.forward * shipSpeed);
+            shipBody.AddForce(Vector3.forward * JSONReader.shipOBJ.shipSpeed);
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 33.33333f); //slingshot movement speed = 33.33333
            
         }
         else if (isBoosted && isSlingshot)
         {
             shipCenter.GetComponent<BoxCollider>().enabled = false;
-            shipBody.AddForce(Vector3.forward* shipSpeed);
+            shipBody.AddForce(Vector3.forward * JSONReader.shipOBJ.shipSpeed);
             shipBody.linearVelocity = Vector3.ClampMagnitude(shipBody.linearVelocity, 33.33333f); //slingshot movement speed while boosted still = 33.33333
         }
         shipVariableSpeed = shipBody.linearVelocity.magnitude;
     }
     void FixedUpdate()
-    {
-        //Debug.Log(boost_value);
+    {   
+        //sets directions of the movement for each input.
         if (moveW.IsPressed())
         {
-            shipBody.AddForce(transform.forward * shipSpeed);
+            shipBody.AddForce(transform.forward * JSONReader.shipOBJ.shipSpeed);
         }
         if (moveS.IsPressed())
         {
-            shipBody.AddForce(-transform.forward * shipSpeed);
+            shipBody.AddForce(-transform.forward * JSONReader.shipOBJ.shipSpeed);
         }
         if (moveA.IsPressed())
         {
-            shipBody.AddForce(-transform.right * shipSpeed);
+            shipBody.AddForce(-transform.right * JSONReader.shipOBJ.shipSpeed);
         }
         if (moveD.IsPressed())
         {
-            shipBody.AddForce(transform.right * shipSpeed);
+            shipBody.AddForce(transform.right * JSONReader.shipOBJ.shipSpeed);
         }
         if (moveSpace.IsPressed())
         {
-            shipBody.AddForce(transform.up * shipSpeed);
+            shipBody.AddForce(transform.up * JSONReader.shipOBJ.shipSpeed);
         }
         if (moveCtrl.IsPressed())
         {
-            shipBody.AddForce(-transform.up * shipSpeed);
+            shipBody.AddForce(-transform.up * JSONReader.shipOBJ.shipSpeed);
         }
-        //Created new bit so it boosts whenever keys F and space-bar are both pressed at same time
+        //check if w and left shift is pressed, if true then player is boosting and decrease value
         if (moveW.IsPressed() && moveShift.IsPressed())
         {
             canRecharge = false;
             isBoosted = true;
             boost_value = Mathf.Clamp(boost_value - 1f, 0f, 100f);
         }
-
+        //if boost can recharge, add to boost value
         if (canRecharge)
         {
             boost_value = Mathf.Clamp(boost_value + 1f, 0f, 100f);
@@ -173,24 +178,28 @@ public class MoveShip : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //if object enters slingshot, then play sound
         if (other.CompareTag("Slingshot")){
             GameAudio.PlaySlingshotSound();
             didSlingshotSoundPlay = true;
         }
     }
     private void OnTriggerStay(Collider other)
-    {
+    {   
+        //if object is in the slingshot, set bool to true
         if (other.CompareTag("Slingshot")){
             isSlingshot = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
+        //if object isn't in the slingshot, set bool to false
         if (other.CompareTag("Slingshot"))
         {
             isSlingshot = false;
         }
     }
+    //coroutine for recharging boost, waits 3 seconds then allows for recharge again.
     IEnumerator BoostRecharge()
     {
         isCoroutineRunning = true;
