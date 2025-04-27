@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DistanceToEnd : MonoBehaviour
 {
+    //initialize vars
     public GameObject Cylinder;
     public GameObject End;
     public static float distance;
@@ -10,11 +11,11 @@ public class DistanceToEnd : MonoBehaviour
 
     public void Update()
     {
+        //set distance equal to float using built in method
         distance = Vector3.Distance(Cylinder.transform.position, End.transform.position);
-        // Debug.Log("Distance until end " + (distance - 10));
 
+        //if distance is < 10, load victory scene.
         if(distance < 10){
-            Debug.Log("Congrats!");
             gameWon = true;
             SceneManager.LoadScene(4);
         }

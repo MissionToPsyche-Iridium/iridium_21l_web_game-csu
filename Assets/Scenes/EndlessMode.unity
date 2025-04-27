@@ -8027,6 +8027,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textWarning: {fileID: 761881660}
+--- !u!114 &994505062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994505041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6e70fd516594e4396f652a24ce5c03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JSON: {fileID: 4900000, guid: ab4e4e929565ab84ab0c0df53ebff682, type: 3}
 --- !u!1 &996424942
 GameObject:
   m_ObjectHideFlags: 0
@@ -13673,6 +13686,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4803693634237829045, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 994505061}
+    - targetCorrespondingSourceObject: {fileID: 4803693634237829045, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 994505062}
     - targetCorrespondingSourceObject: {fileID: 3067677941503281330, guid: 8b7142d56eb1e1d49a7ce5ea4b1fb88d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 896116663}

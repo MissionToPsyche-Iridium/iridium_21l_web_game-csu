@@ -11,8 +11,9 @@ public class RotateMenuObject : MonoBehaviour {
     void Start() { //ship starts at a certain angle
         transform.eulerAngles = new Vector3(xRotation + 270,yRotation,zRotation);
     }
-    void Update() { //ship rotates steadily clockwise (if you were looking from a top-down perspective)
-        Debug.Log(xRotation.ToString() + " " + yRotation.ToString() + " " + zRotation.ToString());
+
+    void Update() {
+
         xRotation = transform.localRotation.x;
         yRotation = transform.localRotation.y;
         zRotation = transform.localRotation.z;

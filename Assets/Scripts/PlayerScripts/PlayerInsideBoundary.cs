@@ -4,8 +4,9 @@ using TMPro;
 
 public class PlayerInsideBoundary : MonoBehaviour
 {
+    //initialize vars
     private bool startTime = false;
-    private float waitTime = 10.2f;
+    //private float waitTimeBoundary = 10.2f;
     private float timer = 0f;
     float timeLeft;
     public TMP_Text OutOfBoundsWarning;
@@ -13,6 +14,7 @@ public class PlayerInsideBoundary : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if cutscene is true and starttime is false, make sure no message is shown and set time to 0
         if (!startTime && spawnScript.cutscene == true)
         {
 
@@ -20,19 +22,21 @@ public class PlayerInsideBoundary : MonoBehaviour
             OutOfBoundsTime.color = Color.clear;
             timer = 0f;
         }
+        //if out of cutscene and starttime is true, show out of bounds timer
         else if (startTime && spawnScript.cutscene == false)
         {
             OutOfBoundsTime.color = Color.white;
             OutOfBoundsWarning.color = Color.white;
             startTimer();
 
-            timeLeft = waitTime - timer;
+            timeLeft = JSONReader.shipOBJ.waitTimeBoundary - timer;
             if (timeLeft < 0) timeLeft = 0; //prevents negative values from showing on screen
 
             float minutes = Mathf.FloorToInt(timeLeft / 60f);
             float seconds = Mathf.FloorToInt(timeLeft % 60f);
             OutOfBoundsTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
+        //if starttime is false and not in cutscene, clear out of bounds text
         else if (!startTime && spawnScript.cutscene == false)
         {
             OutOfBoundsWarning.color = Color.clear;
@@ -40,17 +44,16 @@ public class PlayerInsideBoundary : MonoBehaviour
             timer = 0f;
         }
     }
-
+    //method to count time, and if time is greater than 10 seconds, load you lose scene.
     private void startTimer()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
-        if (timer > waitTime)
+        if (timer > JSONReader.shipOBJ.waitTimeBoundary)
         {
-            Debug.Log("Game Over");
             SceneManager.LoadScene(5);
         }
     }
+    //while object is in boundary, dont start timer
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("PlayerBoundary"))
@@ -60,7 +63,7 @@ public class PlayerInsideBoundary : MonoBehaviour
         }
         
     }
-
+    //when player exits bounds, start the timer
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("PlayerBoundary"))
