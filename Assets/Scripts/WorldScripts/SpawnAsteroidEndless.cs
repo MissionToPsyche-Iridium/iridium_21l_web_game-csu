@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class SpawnAsteroidEndless : MonoBehaviour
 {
-    //initialize vars
     private Vector3 playerRot;
     private Transform playerT;
     public GameObject asteroid;
@@ -23,7 +22,6 @@ public class SpawnAsteroidEndless : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //set object equal to player transform, and randomly generate a wait time
         playerT = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         waitTime = Random.Range(1.0f, 4.0f);
     }
@@ -31,25 +29,23 @@ public class SpawnAsteroidEndless : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //set var equal to current player rotation
         playerRot = playerT.rotation.eulerAngles;
-        //if not in cutscene start timer and continute with the rest
         if (!spawnScript.cutscene) 
         { 
         timer += Time.deltaTime;
-        //if timer is above wait time, reset timer
+
         if (timer > waitTime)
         {
-
             timer -= waitTime;
-            //randomly generate x,y, and speed values, then have the meteoroid spawner look at the player and then turn based on the x and y, and shoot meteoroid at random speed
+            //ranX = Random.Range(-15f, 15f);
+            //ranY = Random.Range(175f, 185f);
             ranX = Random.Range(-7f, 7f);
             ranY = Random.Range(-7f, 7f);
             ranSpeed = Random.Range(10f, 25f);
             asteroidSpawnerTransform.LookAt(playerPos);
+            //asteroidSpawnerTransform.rotation = Quaternion.Euler(-playerRot.x + ranX, playerRot.y + ranY, 0f);
             asteroidSpawnerTransform.rotation *= Quaternion.Euler(ranX,ranY, 0f);
-            //if player is missing health, have 5% chance to spawn a heart
-            if (CheckHit.playerHealth < 3 && Random.Range(0,100) < 6)
+            if (CheckHit.playerHealth < 3 && Random.Range(0,101) < 6)
                 {
                     spawnHealth();
                 }
@@ -64,7 +60,7 @@ public class SpawnAsteroidEndless : MonoBehaviour
         }
         
     }
-    //spawn meteoroid with random speed and rotation
+
     private void spawnAsteroid()
     {
         newAsteroid = Instantiate(asteroid, asteroidSpawnerTransform.position, asteroidSpawnerTransform.rotation);
@@ -73,15 +69,15 @@ public class SpawnAsteroidEndless : MonoBehaviour
         
         asteroidRB.linearVelocity = asteroidRB.transform.TransformDirection(Vector3.forward * ranSpeed);
     }
-    //spawn health with random speed at random rotation
     private void spawnHealth()
     {
         newHealth = Instantiate(health, asteroidSpawnerTransform.position, asteroidSpawnerTransform.rotation);
         healthRB = newHealth.GetComponent<Rigidbody>();
 
         healthRB.linearVelocity = healthRB.transform.TransformDirection(Vector3.forward * ranSpeed);
+       // rotateHealth(healthRB, newHealth);
     }
-    //slowly scale the meteoroid as it comes closer to player to make it appear as if it is coming from further away, and destroy after 10 seconds for optimization.
+
     private void scaleAsteroid(Rigidbody asteroidRB, GameObject newAsteroid)
     {
         StartCoroutine(scaleTimer());

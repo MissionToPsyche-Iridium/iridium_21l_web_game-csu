@@ -6,8 +6,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class IntroText : MonoBehaviour
 {
-    //initialize vars
-    //used same dialouge tutorial used in psyche facts script to display text across screen
     //https://www.youtube.com/watch?v=8oTYabhj248
     public TextMeshProUGUI textStory1;
     public TextMeshProUGUI textStory2;
@@ -17,7 +15,6 @@ public class IntroText : MonoBehaviour
     public InputAction storySpace;
     private bool isDialougeRunning1 = false;
     private bool isDialougeRunning2 = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         textStory1.text = string.Empty;
@@ -26,11 +23,8 @@ public class IntroText : MonoBehaviour
         
 
     }
-
-    // Update is called once per frame
-    void Update()
+    void Update() //checks if there is more text to be "typed"
     {
-        //check counter that increments every time space or left click is pressed for skipping, once each text box is done displaying go next until it loads game scene.
         if (counter == 0)
         {
             if (!isDialougeRunning1)
@@ -64,8 +58,8 @@ public class IntroText : MonoBehaviour
     {
         StartCoroutine(TypeLine());
     }
-    //display each text box respective to the counter.
-    IEnumerator TypeLine()
+
+    IEnumerator TypeLine() //line typed in story
     {
         
         if (counter == 0)

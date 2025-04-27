@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class VolumeSlider : MonoBehaviour {
     [SerializeField] Slider Volume;
     public void Awake() {
-        if(!PlayerPrefs.HasKey("musicVolume")) {
-            PlayerPrefs.SetFloat("musicVolume", 1f);
+        if(!PlayerPrefs.HasKey("musicVolume")) { //volume set at 50% if there isn't one set already by the player
+            PlayerPrefs.SetFloat("musicVolume", .5f);
             Load();
         }
-        else {
-            Load();
+        else { //if it is already set, load that value instead
+            Load(); 
         }
     }
     public void ChangeVolume() {
@@ -20,13 +20,10 @@ public class VolumeSlider : MonoBehaviour {
     }
 
     public void Load() {
-        Volume.value = PlayerPrefs.GetFloat("musicVolume");
+        Volume.value = PlayerPrefs.GetFloat("musicVolume"); //uses playerprefs to load value
     }
 
     public void Save() {
-        PlayerPrefs.SetFloat("musicVolume", Volume.value);
-    }
-    private void OnApplicationQuit() {
-        Save();
+        PlayerPrefs.SetFloat("musicVolume", Volume.value); //saves value with playerprefs
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ChangePathColor : MonoBehaviour
 {
-    //initialize vars
     private float timer = 0.0f;
     private float waitTime = 5.0f;
     private bool isBlue = true;
@@ -21,21 +20,18 @@ public class ChangePathColor : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //set path color to glowing blue
         glowMaterial.color = blue * 2f;
         glowMaterial.SetColor("_EmissionColor", blue);
     }
 
     // Update is called once per frame
-    //how to emit colors which the paths use
     //https://discussions.unity.com/t/setting-emission-color-programatically/152813
     void Update()
     {
-        //constantly have timer counting, and iterate between turning path to bright blue and invisible
+
         timer += Time.deltaTime;
         if (timer > waitTime && shouldFade)
         {
-            //lerp timer used for seamless transitioning of color to invis
             lerpTimer += Time.deltaTime;
             if (isBlue)
             {
@@ -62,7 +58,6 @@ public class ChangePathColor : MonoBehaviour
         }
        
     }
-    //coroutine for waiting between each iteration to change back to a color or invisible.
     IEnumerator WaitTime()
     {
 

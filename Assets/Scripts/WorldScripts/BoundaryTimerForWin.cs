@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class BoundaryTimerForWin : MonoBehaviour
 {
-    //initialize vars
     public GameObject player;
     private float waitTime = 3f;
     private float timer = 0.0f;
@@ -21,15 +20,15 @@ public class BoundaryTimerForWin : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        //if player in boundary start timer, once in for long enough player won equals true
-        //this script is obselete in current game.
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Stay in area until ship is maintained at safe distance.");
             timer += Time.deltaTime;
 
             if (timer > waitTime)
             {
                 playerWon = true;
+                Debug.Log("You Win!");
             }
         }
     }
