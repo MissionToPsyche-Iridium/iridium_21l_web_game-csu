@@ -474,6 +474,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 83172928464498360, guid: 0d78461775be1c74e949c7ca87b789bc, type: 3}
+      propertyPath: m_margin.z
+      value: 129.3681
+      objectReference: {fileID: 0}
     - target: {fileID: 946909046906244848, guid: 0d78461775be1c74e949c7ca87b789bc, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -557,6 +561,10 @@ PrefabInstance:
     - target: {fileID: 4465827735389828955, guid: 0d78461775be1c74e949c7ca87b789bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5378040733889092441, guid: 0d78461775be1c74e949c7ca87b789bc, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 66
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
