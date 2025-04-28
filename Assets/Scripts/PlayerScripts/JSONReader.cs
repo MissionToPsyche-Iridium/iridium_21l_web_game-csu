@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class JSONReader : MonoBehaviour
 {
-    //https://youtu.be/XbdnG__wzZ8?si=P-XVWQXEEiKRt2Z6
-    //https://youtu.be/pVXEUtMy_Hc?si=7pGVcO5ZinNVvqRN
     public TextAsset JSON;
     //class for all vars from JSON
     public class Ship
