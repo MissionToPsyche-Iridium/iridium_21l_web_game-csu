@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
-using UnityEngine.InputSystem.Android;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 public class IntroText : MonoBehaviour
