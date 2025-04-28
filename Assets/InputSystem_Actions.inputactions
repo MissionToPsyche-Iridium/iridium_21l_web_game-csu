@@ -510,6 +510,17 @@
                 },
                 {
                     "name": "",
+                    "id": "f165924f-458e-4bb2-80fa-ff5282672ad1",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "MoveCtrl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0e6fee73-1dfb-4ab4-907b-ff2e49a369d7",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
